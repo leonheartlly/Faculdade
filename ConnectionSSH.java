@@ -17,7 +17,7 @@ public class ConnectionSSH {
 		try {
 
 			jsch = new JSch();
-			session = jsch.getSession("vantive", "10.32.8.95", 22);
+			session = jsch.getSession("user", "ip", 22);
 			session.setUserInfo(new UsuarioSSH());
 			session.connect();
 
