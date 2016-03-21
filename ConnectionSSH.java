@@ -23,12 +23,12 @@ public class ConnectionSSH {
 
 			if (session.isConnected())
 				log.log(Level.INFO,
-						"[SSHClient]Conex„o SSH efetuada com sucesso!");
+						"[SSHClient]Conex√£o SSH efetuada com sucesso!");
 
 			exportOMU();
 		} catch (Exception e) {
 			log.log(Level.SEVERE,
-					"[SSHClient] Erro de sess„o! N„o foi possÌvel conectar ao servidor SSH!"
+					"[SSHClient] Erro de sess√£o! N√£o foi poss√≠vel conectar ao servidor SSH!"
 							+ e);
 		}
 	}
@@ -50,7 +50,7 @@ public class ConnectionSSH {
 			importOMU();
 		} catch (JSchException e) {
 			log.log(Level.SEVERE,
-					"[SSHCLIENT] N√O FOI POSSÕVEL EFETUAR O EXPORT DO ARQUIVO OMU! "
+					"[SSHCLIENT] N√ÉO FOI POSS√çVEL EFETUAR O EXPORT DO ARQUIVO OMU! "
 							+ e);
 
 		}
@@ -82,7 +82,7 @@ public class ConnectionSSH {
 			session.disconnect();
 		} catch (JSchException e) {
 			log.log(Level.SEVERE,
-					"[SSHCLIENT] N√O FOI POSSÕVEL EFETUAR O IMPORT DO ARQUIVO OMU! "
+					"[SSHCLIENT] N√ÉO FOI POSS√çVEL EFETUAR O IMPORT DO ARQUIVO OMU! "
 							+ e);
 
 		}
