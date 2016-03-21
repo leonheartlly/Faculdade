@@ -1,0 +1,40 @@
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.Properties.Resources.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.csproj.GenerateResource.Cache
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.exe
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.pdb
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.exe
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.pdb
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.exe.config
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.end.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.fone.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.nome.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.FormMain.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\bin\Debug\Agenda.exe.config
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.exe
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.pdb
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\bin\Debug\Agenda.exe
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\bin\Debug\Agenda.pdb
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.end.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.fone.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.FormMain.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.nome.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\Agenda.Properties.Resources.resources
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\curso\Desktop\Agenda\Agenda\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\malopera\Agenda\Agenda\bin\Debug\Agenda.exe.config
+E:\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.exe
+E:\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.pdb
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\bin\Debug\Agenda.exe.config
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.exe
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.pdb
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\bin\Debug\Agenda.exe
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\bin\Debug\Agenda.pdb
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.end.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.fone.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.FormMain.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.nome.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.Properties.Resources.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.csproj.GenerateResource.Cache
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.edita.resources
+C:\Users\Lucas\Desktop\malopera\Agenda\Agenda\obj\x86\Debug\Agenda.csprojResolveAssemblyReference.cache
