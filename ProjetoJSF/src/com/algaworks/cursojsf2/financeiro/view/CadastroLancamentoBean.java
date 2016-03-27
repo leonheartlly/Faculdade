@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
 
@@ -64,6 +65,18 @@ public class CadastroLancamentoBean implements Serializable {
 				new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
 	}
 
+	/**
+	 * Escuta o checkbox ao modificar.
+	 * Através do imediate adianta alguns passos para o valor de lancamento.pago para efetuar validações posteriores.
+	 * @param event
+	 */
+	public void lancamentoPagoModificado(ValueChangeEvent event){
+		this.lancamento.setPago((Boolean)event.getNewValue());
+		lancamento.setDataPagamento(null);
+		//força a ir para a ultima fase pulando todas as validações
+		FacesContext.getCurrentInstance().renderResponse();
+	}
+	
 	/**
 	 * Retorna os enumeradores.	
 	 * @return
