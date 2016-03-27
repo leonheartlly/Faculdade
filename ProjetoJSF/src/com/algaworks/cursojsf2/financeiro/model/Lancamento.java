@@ -4,6 +4,18 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="lancamento")
 public class Lancamento implements Serializable {
 
 	private Integer codigo;
@@ -15,48 +27,64 @@ public class Lancamento implements Serializable {
 	private boolean pago;
 	private Date dataPagamento;
 	
+	@Id
+	@GeneratedValue
 	public Integer getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+	@Enumerated(EnumType.STRING) //guarda apenas a descrição do enum
 	public TipoLancamento getTipo() {
 		return tipo;
 	}
 	public void setTipo(TipoLancamento tipo) {
 		this.tipo = tipo;
 	}
+	
+	@ManyToOne //usado pois faz uma referencia de outra tabela
+	@JoinColumn(name="codigo_pessoa")//nomes diferentes, mostra o nome do campo onde é feito o join
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+	
+	@Column
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	@Column
 	public BigDecimal getValor() {
 		return valor;
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+	
+	@Column(name="data_vencimento")
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
+	
+	@Column
 	public boolean isPago() {
 		return pago;
 	}
 	public void setPago(boolean pago) {
 		this.pago = pago;
 	}
+	
+	@Column(name="data_pagamento")
 	public Date getDataPagamento() {
 		return dataPagamento;
 	}

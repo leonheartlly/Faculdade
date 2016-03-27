@@ -2,6 +2,16 @@ package com.algaworks.cursojsf2.financeiro.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+//anotações do hibernate
+@Entity
+@Table
 public class Pessoa implements Serializable {
 
 	private Integer codigo;
@@ -15,12 +25,16 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 	
+	@Id //informa que é um campo que nunca irá se repetir
+	@GeneratedValue //informa que é um campo auto increment, o BD que gera os valores
 	public Integer getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+	
+	@Column(name="nome")//desnecessário o name pois o nome coincide com a tabela (por este motivo, sem o column tb funfa)
 	public String getNome() {
 		return nome;
 	}

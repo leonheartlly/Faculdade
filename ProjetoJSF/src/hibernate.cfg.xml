@@ -16,6 +16,10 @@
  		 
  		
  		<!-- <property name="hbm2ddl.auto">update</property> -->
+ 		
+ 		<!-- Mapeamento das classes anotadas -->
+ 		<mapping class="com.algaworks.cursojsf2.financeiro.model.Lancamento"/>
+ 		<mapping class="com.algaworks.cursojsf2.financeiro.model.Pessoa"/>
  		</session-factory> 
  </hibernate-configuration>
 
