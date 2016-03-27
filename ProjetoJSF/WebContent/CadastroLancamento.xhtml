@@ -27,7 +27,9 @@
 			<h:panelGrid columns="2" styleClass="form-grid"
 					columnClasses="label, campo">
 			
+				
 				<h:outputLabel value="Tipo"/>
+				
 				<h:selectOneRadio value="#{cadastroLancamentoBean.lancamento.tipo}"
 						required="true" label="Tipo do lançamento">
 					<f:selectItems value="#{cadastroLancamentoBean.tiposLancamentos}"
@@ -35,9 +37,13 @@
 						itemValue="#{tipoLancamento}" />
 				</h:selectOneRadio>
 				
+				
 				<h:outputLabel value="Pessoa"/>
-				<h:selectOneMenu>
-					<f:selectItem itemValue="Escola Infantil Abelha Amarela"/>
+				<h:selectOneMenu value="#{cadastroLancamentoBean.lancamento.pessoa}" required="true" label="pessoa">
+					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+					<f:selectItems value="#{cadastroLancamentoBean.pessoas}" var="pessoa"
+								   itemValue="#{pessoa}"
+								   itemLabel="#{pessoa.nome}"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Descrição"/>
