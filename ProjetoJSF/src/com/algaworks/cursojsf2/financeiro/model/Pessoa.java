@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 //anotações do hibernate
 @Entity
-@Table
+@Table(name="pessoa")
 public class Pessoa implements Serializable {
 
 	private Integer codigo;
