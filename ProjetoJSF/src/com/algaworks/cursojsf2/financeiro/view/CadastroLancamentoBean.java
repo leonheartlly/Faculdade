@@ -8,15 +8,23 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import com.algaworks.cursojsf2.financeiro.model.Lancamento;
 import com.algaworks.cursojsf2.financeiro.model.Pessoa;
 import com.algaworks.cursojsf2.financeiro.model.TipoLancamento;
 import com.algaworks.cursojsf2.financeiro.service.GestaoPessoas;
+
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.FacesUtil;
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.HibernateUtil;
 
 @ManagedBean
 @ViewScoped
@@ -36,28 +44,35 @@ public class CadastroLancamentoBean implements Serializable {
 	 * Chamado primeiro sempre que for instanciado.
 	 */
 	@PostConstruct //Usado para chamar primeiro sempre.
+	@SuppressWarnings("unchecked")
 	public void init(){
 		
-		GestaoPessoas gestaoPessoas = new GestaoPessoas();
-		this.pessoas = gestaoPessoas.listarTodas();
+		//Usado apenas para mock
+//		GestaoPessoas gestaoPessoas = new GestaoPessoas();
+//		this.pessoas = gestaoPessoas.listarTodas();
+		
+		Session session = (Session)FacesUtil.getRequestAttribute("session");//session setado em hibernatesessionfilter
+		
+		this.pessoas = session.createCriteria(Pessoa.class)
+				.addOrder(Order.asc("nome"))//ordena por nome
+				.list();
 	}
 	
 	/**
 	 * Cadastra um novo produto.(imprime na tela)
 	 */
 	public void cadastrar() {
-		System.out.println("Tipo: " + this.lancamento.getTipo());
-		System.out.println("Pessoa: " + this.lancamento.getPessoa().getNome());
-		System.out.println("Descrição: " + this.lancamento.getDescricao());
-		System.out.println("Valor: " + this.lancamento.getValor());
-		System.out.println("Data vencimento: " + this.lancamento.getDataVencimento());
-		System.out.println("Conta paga: " + this.lancamento.isPago());
-		System.out.println("Data pagamento: " + this.lancamento.getDataPagamento());
 
+		Session session = (Session)FacesUtil.getRequestAttribute("session");
+		session.merge(this.lancamento);//insere dados no bd, se ja existir atualiza, se nao insere
+		
+//		Session session = HibernateUtil.getSession();
+//		Transaction trans = session.beginTransaction();//inicia transacao com o bd
+		
+//		trans.commit();
+//		session.close();
 		//Novo lançamento instanciado para limpar a tela
 		this.lancamento = new Lancamento();
-		
-		//TODO cadastrar BD.
 		
 		String msg = "Cadastro efetuado com sucesso!";
 		//Adiciona uma mensagem de resposta à fila.

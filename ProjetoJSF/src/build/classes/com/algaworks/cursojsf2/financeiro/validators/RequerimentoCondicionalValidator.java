@@ -9,7 +9,7 @@ import javax.faces.validator.ValidatorException;
 
 import com.sun.faces.util.MessageFactory;
 
-@FacesValidator("com.algaworks.RequerimentoCondicional")
+@FacesValidator("com.algaworks.RequerimentoCondicionalValidador")
 public class RequerimentoCondicionalValidator implements Validator{
 
 	@Override

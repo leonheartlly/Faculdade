@@ -76,9 +76,9 @@
 						label="Data de pagamento" 
 						rendered="#{cadastroLancamentoBean.lancamento.pago}" >
 					<f:convertDateTime pattern="dd/MM/yyyy" />
-					<f:validator validatorId="com.algaworks.RequerimentoCondicional"/>
+					<f:validator validatorId="com.algaworks.RequerimentoCondicionalValidador"/>
 					<f:validator validatorId="com.algaworks.DataFutura"/>
-					<!-- atributo costumizado -->
+					
 					<f:attribute name="checado" value="#{cadastroLancamentoBean.lancamento.pago}"/>
 				</h:inputText>
 				

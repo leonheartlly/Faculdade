@@ -8,7 +8,9 @@ import java.util.Map;
 import com.algaworks.cursojsf2.financeiro.model.Pessoa;
 
 public class GestaoPessoas {
-
+	
+	//Usado apenas para simular banco de dados
+/*
 	private static Map<Integer, Pessoa> pessoas = new HashMap<Integer, Pessoa>();
 	
 	static {
@@ -26,5 +28,5 @@ public class GestaoPessoas {
 	public Pessoa buscarPorCodigo(Integer codigo) {
 		return pessoas.get(codigo);
 	}
-	
+	*/
 }

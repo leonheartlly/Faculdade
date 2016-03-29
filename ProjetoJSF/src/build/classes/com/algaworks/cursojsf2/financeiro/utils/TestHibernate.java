@@ -10,8 +10,8 @@ import com.algaworks.cursojsf2.financeiro.model.Pessoa;
 
 public class TestHibernate {
 
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
+	//@SuppressWarnings("unchecked")
+	/*public static void main(String[] args) {
 		Session session = HibernateUtil.getSession();
 		
 		//busca do banco a lista de todas as pessoas
@@ -25,5 +25,5 @@ public class TestHibernate {
 		}
 		
 		session.close();
-	}
+	}*/
 }

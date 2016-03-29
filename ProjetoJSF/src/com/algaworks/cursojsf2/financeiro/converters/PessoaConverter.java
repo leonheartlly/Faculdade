@@ -5,8 +5,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import org.hibernate.Session;
+
 import com.algaworks.cursojsf2.financeiro.model.Pessoa;
-import com.algaworks.cursojsf2.financeiro.service.GestaoPessoas;
+
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.FacesUtil;
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.HibernateUtil;
 
 @FacesConverter(forClass = Pessoa.class) //registra o conversor (forClass = Pessoa.class) = seta automaticamente o uso deste conversor para esta classe.
 public class PessoaConverter implements Converter{
@@ -19,8 +23,12 @@ public class PessoaConverter implements Converter{
 		Pessoa pessoa = null;
 		
 		if(value != null){
-			GestaoPessoas gestaoPessoas = new GestaoPessoas();
-			pessoa = gestaoPessoas.buscarPorCodigo(new Integer(value));
+			Session session = (Session)FacesUtil.getRequestAttribute("session");
+			pessoa = (Pessoa)session.get(Pessoa.class, new Integer(value));//efetua busca de pessoa pelo codigo
+			
+//			GestaoPessoas gestaoPessoas = new GestaoPessoas();
+//			pessoa = gestaoPessoas.buscarPorCodigo(new Integer(value));
+			
 		}
 		return pessoa;
 	}
