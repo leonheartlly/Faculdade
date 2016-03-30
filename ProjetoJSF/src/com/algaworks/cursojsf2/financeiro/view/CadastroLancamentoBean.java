@@ -47,6 +47,10 @@ public class CadastroLancamentoBean implements Serializable {
 		this.pessoas = pessoas.consultarTodas();
 	}
 	
+	public boolean isEditando(){
+		return this.lancamento.getCodigo() != null;
+	}
+	
 	/**
 	 * Cadastra um novo produto.(imprime na tela)
 	 */
@@ -60,7 +64,7 @@ public class CadastroLancamentoBean implements Serializable {
 			//Novo lançamento instanciado para limpar a tela
 			this.lancamento = new Lancamento();
 			
-			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro Efetuado com sucesso!.");
+			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, "Lançamento salvo com sucesso!.");
 		} catch (RegraNegocioException e) {
 			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Erro ao cadastrar lancamento.");
 		}
@@ -92,6 +96,15 @@ public class CadastroLancamentoBean implements Serializable {
 	 */
 	public Lancamento getLancamento() {
 		return lancamento;
+	}
+
+	public void setLancamento(Lancamento lancamento) throws CloneNotSupportedException {
+		this.lancamento = lancamento;
+		if(this.lancamento == null){
+			this.lancamento = new Lancamento();
+		}else{
+			this.lancamento = (Lancamento)lancamento.clone();
+		}
 	}
 
 	public List<Pessoa> getPessoas() {

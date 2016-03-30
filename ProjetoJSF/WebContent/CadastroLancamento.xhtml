@@ -4,15 +4,20 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<f:metadata>
+		<f:viewParam name="codigo" value="#{cadastroLancamentoBean.lancamento}"></f:viewParam>
+	</f:metadata>
+	
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Novo lançamento</title>
+		<title>#{cadastroLancamentoBean.editando ? 'Editando Lançamento': 'Novo Lançamento'}</title>
 		
 		<h:outputStylesheet library="css" name="sistema.css"/>
 	</h:head>
 	<h:body>
 
-		<h1>Novo lançamento</h1>
+		<h1>#{cadastroLancamentoBean.editando ? 'Editando Lançamento': 'Novo Lançamento'}</h1>
 
 		<h:form id="frm">
 		

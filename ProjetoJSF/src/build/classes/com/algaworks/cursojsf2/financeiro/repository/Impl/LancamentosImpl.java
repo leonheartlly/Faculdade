@@ -28,7 +28,7 @@ public class LancamentosImpl implements ILancamentos{
 
 	@Override
 	public Lancamento constultarPorID(Integer codigo) {
-		return null;
+		return (Lancamento)this.session.get(Lancamento.class, codigo);
 	}
 
 	@Override
