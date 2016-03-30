@@ -8,23 +8,18 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
-import javax.servlet.http.HttpServletRequest;
-
-import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
 
 import com.algaworks.cursojsf2.financeiro.model.Lancamento;
 import com.algaworks.cursojsf2.financeiro.model.Pessoa;
 import com.algaworks.cursojsf2.financeiro.model.TipoLancamento;
-import com.algaworks.cursojsf2.financeiro.service.GestaoPessoas;
+import com.algaworks.cursojsf2.financeiro.service.GestaoLancamentos;
+import com.algaworks.cursojsf2.financeiro.service.RegraNegocioException;
 
+import build.classes.com.algaworks.cursojsf2.financeiro.repository.IPessoas;
 import build.classes.com.algaworks.cursojsf2.financeiro.utils.FacesUtil;
-import build.classes.com.algaworks.cursojsf2.financeiro.utils.HibernateUtil;
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.Repositorios;
 
 @ManagedBean
 @ViewScoped
@@ -40,22 +35,16 @@ public class CadastroLancamentoBean implements Serializable {
 	 */
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 	
+	private Repositorios repositorios = new Repositorios();
+	
 	/**
 	 * Chamado primeiro sempre que for instanciado.
 	 */
 	@PostConstruct //Usado para chamar primeiro sempre.
-	@SuppressWarnings("unchecked")
 	public void init(){
 		
-		//Usado apenas para mock
-//		GestaoPessoas gestaoPessoas = new GestaoPessoas();
-//		this.pessoas = gestaoPessoas.listarTodas();
-		
-		Session session = (Session)FacesUtil.getRequestAttribute("session");//session setado em hibernatesessionfilter
-		
-		this.pessoas = session.createCriteria(Pessoa.class)
-				.addOrder(Order.asc("nome"))//ordena por nome
-				.list();
+		IPessoas pessoas = this.repositorios.getPessoas();
+		this.pessoas = pessoas.consultarTodas();
 	}
 	
 	/**
@@ -63,21 +52,18 @@ public class CadastroLancamentoBean implements Serializable {
 	 */
 	public void cadastrar() {
 
-		Session session = (Session)FacesUtil.getRequestAttribute("session");
-		session.merge(this.lancamento);//insere dados no bd, se ja existir atualiza, se nao insere
 		
-//		Session session = HibernateUtil.getSession();
-//		Transaction trans = session.beginTransaction();//inicia transacao com o bd
-		
-//		trans.commit();
-//		session.close();
-		//Novo lançamento instanciado para limpar a tela
-		this.lancamento = new Lancamento();
-		
-		String msg = "Cadastro efetuado com sucesso!";
-		//Adiciona uma mensagem de resposta à fila.
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
+		GestaoLancamentos gestaoLancamentos = new GestaoLancamentos(this.repositorios.getLancamentos());
+		try {
+			gestaoLancamentos.salvar(this.lancamento);
+			
+			//Novo lançamento instanciado para limpar a tela
+			this.lancamento = new Lancamento();
+			
+			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro Efetuado com sucesso!.");
+		} catch (RegraNegocioException e) {
+			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Erro ao cadastrar lancamento.");
+		}
 	}
 
 	/**

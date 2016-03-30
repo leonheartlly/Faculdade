@@ -8,47 +8,38 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-
 import com.algaworks.cursojsf2.financeiro.model.Lancamento;
+import com.algaworks.cursojsf2.financeiro.service.GestaoLancamentos;
+import com.algaworks.cursojsf2.financeiro.service.RegraNegocioException;
 
+import build.classes.com.algaworks.cursojsf2.financeiro.repository.ILancamentos;
 import build.classes.com.algaworks.cursojsf2.financeiro.utils.FacesUtil;
+import build.classes.com.algaworks.cursojsf2.financeiro.utils.Repositorios;
 
 @ManagedBean
 public class ConsultaLancamentoBean implements Serializable {
 
 	private List<Lancamento> lancamentos = new ArrayList<Lancamento>();
 	private Lancamento lancamentoSelecionado;
+	private Repositorios repositorios = new Repositorios();
 	
 	@PostConstruct
-	@SuppressWarnings("unchecked")
 	public void inicializar() {
-//		Session session = HibernateUtil.getSession();
-		Session session = (Session)FacesUtil.getRequestAttribute("session");
-		
-		lancamentos = session.createCriteria(Lancamento.class)
-				.addOrder(Order.desc("dataVencimento"))
-				.list();
-		
-//		session.close();
+		ILancamentos lancamentos = this.repositorios.getLancamentos();
+
+		this.lancamentos = lancamentos.constultarLancamentos();
 	}
 
 	public void excluir(){
-		if(lancamentoSelecionado.isPago()){
-			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Lancamentos pagos não podem ser excluidos!.");
-		}else{
-			Session session = (Session)FacesUtil.getRequestAttribute("session");			
-//			Transaction trans = session.beginTransaction();
+		
+		GestaoLancamentos gestaoLancamentos = new GestaoLancamentos(this.repositorios.getLancamentos());
+		try {
+			gestaoLancamentos.excluir(lancamentoSelecionado);
 			
-			session.delete(lancamentoSelecionado);
-			
-//			trans.commit();
-//			session.close();
-			
-			this.inicializar();
-			
+			this.inicializar();//para limpar recarregando 
 			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO, "Lancamento excluido com sucesso!.");
+		} catch (RegraNegocioException e) {
+			FacesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Lancamentos pagos não podem ser excluidos!." + e.getMessage());
 		}
 	}
 	
