@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <!--  <meta charset="utf-8"/> -->
+        
+        <title>Cadastro Cliente</title>
+        
+        <link href='http://fonts.googleapis.com/css?family=OpenSans:300,400,700' rel='stylesheet' type='text/css'/>
+        <link  rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/styleCadastro.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilos.css" />  
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/menuCascata.css" />
+    </h:head>
+        <h:body  >
+       
+       
+        
+            <div id="container">
+				<div id="menu">
+					<ui:insert name="menu">
+						<ui:include src="menu2.xhtml" />
+					</ui:insert>
+				</div>
+                
+                
+            </div>
+     <section>
+    	 <div class="formulario">  
+              <!-- Topo da pagina -->
+      
+
+             <h:form  id="validate">     
+             
+              	<label>Usuario</label>
+                <p:inputText styleClass="g"  value="#{ClienteBean.user.username}"/>
+                
+                 <label>Senha</label>
+                <p:inputText styleClass="g"  value="#{ClienteBean.user.password}"/>             
+                    
+                <label>Nome</label>
+                <p:inputText styleClass="g"  value="#{ClienteBean.cliente.nome}"/>
+
+                <label>E-mail</label>
+                <p:inputText styleClass="g" value="#{ClienteBean.cliente.email}"/>
+                
+                 <label>CPF</label>
+                 <p:inputMask styleClass="p"  mask="999.999.999-99" value="#{ClienteBean.cliente.cpf}" />
+
+                <label>Telefone</label>
+                <p:inputMask styleClass="p"  mask="(99) 9999-9999" value="#{ClienteBean.cliente.tel}" />
+
+                <label>Data</label>
+                <p:inputMask  styleClass="p"   mask="99/99/9999" value="#{ClienteBean.cliente.data}"/>
+                 
+                <label>CEP</label>
+                <p:inputMask  styleClass="p"  mask="99999-999" value="#{ClienteBean.cliente.cep}"/>
+
+                <label>Endereço</label>
+                <p:inputText styleClass="g" value="#{ClienteBean.cliente.endereco}"/>
+                
+                <label>Número</label>
+                <p:inputText styleClass="pp" value="#{ClienteBean.cliente.numero}"/>
+             
+                <label>Bairro</label>
+                <p:inputText styleClass="p" value="#{ClienteBean.cliente.bairro}"/>
+                
+                <label>Cidade</label>
+                <p:inputText styleClass="p" value="#{ClienteBean.cliente.cidade}"/>
+
+                <label>Estado</label>
+                <p:inputMask  styleClass="pp"   mask="**" value="#{ClienteBean.cliente.estado}"/>
+               
+                <label>País</label>
+                <p:inputText styleClass="p" value="#{ClienteBean.cliente.pais}"/>
+                
+                <p:commandButton  styleClass="buttonEnviar" value="Cadastrar" id="nonAjax" action="#{ClienteBean.adicionarCliente()}" ajax="false" />
+                
+                
+           </h:form>
+    	</div><!--/formulario-->
+                
+   
+</section>
+        
+   
+    </h:body>
+</html>
+

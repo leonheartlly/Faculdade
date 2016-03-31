@@ -1,0 +1,31 @@
+<project name="AssessoriaJuridica" basedir="." default="copy" >
+
+	<!-- configurações da aplicacação -->
+	<property name="project.name" value="assessoria-juridica" />
+	
+    <property name="folder.destination" location="/home/elton/ambiente/servers/jboss-as-7.1.1.Final/standalone/deployments" />
+	<property name="folder.origin" location="${basedir}/target" />
+	<property name="jboss.uselessFolders" location="/home/elton/ambiente/servers/jboss-as-7.1.1.Final/standalone"></property>
+    
+    <target name="runMavenPackage" description="Gera o war primeiro.">
+    	<echo>Executando clean package para geração do war</echo>
+    	<exec executable="mvn">
+        	<arg value="clean"/>
+        	<arg value="-Dmaven.test.skip=true"/>
+        	<arg value="package"/>
+    	</exec>
+    </target>
+    
+    <target name="copy" depends="runMavenPackage" description="Copia o arquivo war para a pasta do tomcat">
+    	<echo>Copiando o arquivo war para servidor de aplicação</echo>
+    	<copy file="${folder.origin}/${project.name}.war" todir="${folder.destination}" />
+    </target>
+    
+    <target name="deleteFolders" description="Deleta pastas para evitar cache">
+    	<echo>Removendo pastas temporárias do servidor de aplicação</echo>
+    	<delete dir="${jboss.uselessFolders}/tmp" />
+    	<delete dir="${jboss.uselessFolders}/data" />
+    	<delete dir="${jboss.uselessFolders}/log" />
+    </target>
+
+</project>

@@ -1,0 +1,3 @@
+<jboss-web>
+	<context-root>AgenciaTurismo</context-root> 	
+</jboss-web>

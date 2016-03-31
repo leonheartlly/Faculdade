@@ -1,0 +1,11 @@
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.Properties.Resources.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.csproj.GenerateResource.Cache
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.exe
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.pdb
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.exe
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.pdb
+F:\workspace Visual Studio\Agenda\Agenda\bin\Debug\Agenda.exe.config
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.end.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.fone.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.nome.resources
+F:\workspace Visual Studio\Agenda\Agenda\obj\x86\Debug\Agenda.FormMain.resources

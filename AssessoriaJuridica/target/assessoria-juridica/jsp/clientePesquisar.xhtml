@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:title>
+
+<h:body>
+<f:view>
+		<p:growl sticky="true" showSummary="true" autoUpdate="true" life="3000" />
+		<h:form id="form">
+			<div id="container">
+				<div id="menu">
+					<ui:insert name="menu">
+						<ui:include src="menu.xhtml" />
+					</ui:insert>
+				</div>
+					<div id="corpo">
+						<ui:insert name="corpo">
+							<br />
+							<br />
+							<br />
+							<p:panel header="Clientes" >
+							<p:dataTable emptyMessage="Nenhum cliente encontrado." value="#{clienteBean.clientes}" var="item" paginator="true" rows="10">
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Nome Cliente"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.nomeCliente}"/>
+		                            </center>
+		                        </p:column>
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Nro OAB"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.numeroOab}"/>
+		                            </center>
+		                        </p:column>
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Cidade"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.cidade}"/>
+		                            </center>
+		                        </p:column>
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Telefone"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.telefone}"/>
+		                            </center>
+		                        </p:column> 
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Celular"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.celular}"/>
+		                            </center>
+		                        </p:column>
+                        		<p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="E-mail"/>
+		                            </f:facet>
+		                            <center>
+		                            <h:outputText value="#{item.email}"/>
+		                            </center>
+		                        </p:column>
+                        
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Editar"/>
+		                            </f:facet>
+		                            <center>
+			                            <h:commandLink styleClass="ui-icon ui-icon-pencil" action="clienteInserir.xhtml" >
+			                                <f:setPropertyActionListener value="#{item}" target="#{clienteBean.cliente}" />
+			                            </h:commandLink>
+		                            </center>  
+		                        </p:column>
+		                        <p:column>
+		                            <f:facet name="header">
+		                                <h:outputText value="Deletar"/>
+		                            </f:facet>
+		                            <center>
+			                            <h:commandLink styleClass="ui-icon ui-icon-trash" onclick="cd.show(); return false;"  />
+		                            </center>
+		                        </p:column>
+                    		</p:dataTable>
+							</p:panel>
+								
+						</ui:insert>
+					</div>
+                 </div>
+		</h:form>
+		<p:confirmDialog message="Deseja realmente excluir?"	header="Inciando processo de exclusão" severity="alert" widgetVar="cd" global="true">	
+			<p:commandButton value="Sim" update="form" action="#{clienteBean.remover}" onclick="cd.hide()">
+				<f:setPropertyActionListener value="#{item}" target="#{clienteBean.cliente}" />
+			</p:commandButton>
+			<p:commandButton value="Não" onclick="cd.hide();" type="button" />
+		</p:confirmDialog>
+		
+	</f:view>
+
+</h:body>
+
+</html>

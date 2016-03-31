@@ -1,0 +1,73 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.1.xsd">
+ 
+ 	<context:annotation-config />
+	<context:component-scan base-package="br.com.unitri.agenciaturismo" /> <!-- NOME BASE DAS PACKAGES -->
+ 
+ 	<!-- *** String encryptor *** -->
+	<bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="config" ref="customEnvironmentStringPBEConfig" />
+	</bean>
+
+	<!-- *** 'PlaceHolder' for properties replacement *** -->
+	<bean id="criptoPlaceHolderService"
+		class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer">
+		<constructor-arg ref="configurationEncryptor" />
+		<property name="location">
+			<value>classpath:agenciaturismo.properties</value>
+		</property>
+		<property name="placeholderPrefix" value="%$[" />
+		<property name="placeholderSuffix" value="]" />
+	</bean>
+	
+ 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<!-- Pessoa -->
+	<bean id="sessionFactoryTurismo" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" >
+		
+		<property name="packagesToScan" value="br.com.unitri.agenciaturismo.model" />
+		<property name="dataSource" ref="dataSource" />
+			
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">%$[jdbc.mysql.dialect]</prop>
+				<prop key="hibernate.show_sql">%$[hibernate.show_sql.option]</prop>
+				<prop key="hibernate.format_sql">%$[hibernate.format_sql.option]</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/AgenciaTurismo" />
+		<property name="username" value="root" /><!-- complicação -->
+		<property name="password" value="root" />
+	</bean>
+	
+	<bean id="transactionManagerTurismo" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryTurismo"/>
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="transactionManagerTurismo" />
+    
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	
+	<bean id="clienteService" class="br.com.unitri.agenciaturismo.service.impl.ClienteServiceImpl" />
+	<bean id="userRolesService" class="br.com.unitri.agenciaturismo.service.impl.UserRolesServiceImpl" />
+	<bean id="usersService" class="br.com.unitri.agenciaturismo.service.impl.UsersServiceImpl" />
+	<bean id="destinoService" class="br.com.unitri.agenciaturismo.service.impl.DestinoServiceImpl" />
+	<bean id="hotelService" class="br.com.unitri.agenciaturismo.service.impl.HotelServiceImpl" />
+	<bean id="companhiaService" class="br.com.unitri.agenciaturismo.service.impl.CompanhiaServiceImpl" />
+	<bean id="funcionarioService" class="br.com.unitri.agenciaturismo.service.impl.FuncionarioServiceImpl" />
+	<bean id="pacoteService" class="br.com.unitri.agenciaturismo.service.impl.PacoteServiceImpl" />
+	<bean id="reservaService" class="br.com.unitri.agenciaturismo.service.impl.ReservaServiceImpl" />
+	
+</beans>

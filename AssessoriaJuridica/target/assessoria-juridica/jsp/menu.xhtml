@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/principal.css" />
+        <h:outputScript library="js" name="funcoes.js" />
+
+        <style type="text/css">
+               .ui-layout-north {
+                      z-index:20 !important;
+                      overflow:visible !important;;
+               }
+              .ui-layout-north .ui-layout-unit-content {
+                      overflow:visible !important;
+               }
+        </style>
+        
+		<title>Assessoria Jurídica</title>
+	</h:head>
+	
+<h:body>
+		<div>
+						<h:graphicImage library="imagens" name="assessoria-juridica.png" width="300" height="50"/>
+		</div>
+	<br/>      
+	
+	<h:form>  
+  
+	     <p:growl sticky="true" showSummary="true" autoUpdate="true" /> 
+	  
+	    <p:menubar> 
+	    	<p:menuitem value="Home" url="/jsp/index.xhtml" icon="ui-icon-home" />
+	        
+	        <p:submenu label="Clientes" icon="ui-icon-person">  
+	            <p:menuitem value="Inserir" url="/jsp/clienteInserir.xhtml" icon="ui-icon-contact"/>  
+	            <p:menuitem value="Pesquisar" url="/jsp/clientePesquisar.xhtml" icon="ui-icon-search"/> 
+	        </p:submenu>  
+	       
+	        <p:submenu label="Relatórios" icon="ui-icon-document">  
+	            <p:menuitem value="processos" url="/jsp/arquivoRelatorio.xhtml" icon="ui-icon-document"/>  
+	            <p:menuitem value="gráficos" url="/jsp/arquivoGraficos.xhtml" icon=" ui-icon-bookmark"/> 
+	        </p:submenu>  
+	  
+	  		<p:submenu label="Processos" icon="ui-icon-clipboard">  
+	  			<p:menuitem value="Iniciar Processo" url="/jsp/processarArquivo.xhtml" icon="ui-icon-document" />
+	        	<p:menuitem value="Enviar e-mail" url="/jsp/enviarEmail.xhtml" icon="ui-icon-mail-closed" />  
+	  		</p:submenu>  
+	      	<f:facet name="options">  
+        		<h:outputLink  value="#{request.contextPath}/j_spring_security_logout">Sair</h:outputLink>  
+        	</f:facet>  
+	    </p:menubar>   
+  
+	</h:form>
+	
+	</h:body>
+</html>

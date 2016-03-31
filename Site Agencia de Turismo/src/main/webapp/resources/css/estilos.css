@@ -1,0 +1,88 @@
+body.corpo{
+      background-image: url('../imagens/MEGA.png');
+      background-position: 0 0;
+      background-repeat: repeat;
+}
+
+*{
+ margin: 2; /*Zera todo o espa�amento EXTERNO entre as DIV's*/
+ padding: 0; /*Zera todo o espa�amento INTERNO das DIV's*/
+ }
+ 
+.unitriLogo {border: 0px; height:45px; width:135px; float: left; background: url("../imagens/unitriLogo.png"); background-repeat: no-repeat; margin-left: 17px; margin-top: 4px; margin-bottom: 0; outline:none}
+
+.pictureInput1 {border: 0px solid #444444; height:52px; width:100%; background: url("../imagens/textbox1.png"); background-position: 0 0; background-repeat: no-repeat; padding: 0px 5px; padding-left: 50px; outline: none; margin-left: 160px; margin-top: 0px;}
+
+.pictureInput2 {border: 0px solid #444444; height:52px; width:370px; background: url("../imagens/textbox2.png"); background-position: 0 0; background-repeat: no-repeat; padding: 0px 5px; padding-left: 50px; outline: none; margin-left: 160px; margin-top: 30px;}
+
+.pictureInput3 {border: 0px solid #444444; height:52px; width:370px; background: url("../imagens/textbox3.png"); background-position: 0 0; background-repeat: no-repeat; padding: 0px 5px; padding-left: 50px; outline: none; margin-left: 160px; margin-top: 33px;}
+
+.pictureTermo {height:35px; width:35px; outline: none; margin-top: 33px; margin-left: 160px; margin-top: 48px; cursor: pointer; color: blue; float: left;}
+
+.button {border: 0px; background: white url("../imagens/login_1.png") no-repeat top; width: 426px; height: 43px; margin-top: 25px; margin-left: 160px; outline:none}
+
+#tudo {
+      width: 100%;
+      height: 100;
+      top: 0;
+      left: 0;
+      bottom: 0;
+}
+    
+#topo {
+      height: 53px;
+      width: 100%;
+      background-color: black;
+}
+
+#menu {
+      float: left;
+      width: 615px;
+      height: 100%;
+      
+      /*background-color: #0000FF;*/
+}
+
+
+#lateral {
+      height: 80%;
+      width: 150px;
+      margin: 20px 0 0 10px;
+      background-color: black;
+}
+
+
+#conteudo {
+      float: right;
+      width: 749px;
+      height: 100%;
+      /*background-color: #FF0000;*/
+      margin-top: -7px;
+      margin-left: 0px;
+}
+
+#rodape {
+      position: fixed;
+      bottom:0;
+      width:100%;
+      height: 50px;
+      /*background-color: #FFFF00;*/
+}
+
+.t1{color: #333333;}
+
+.t2{color: #bf1900;}
+
+.t3{color: #333333; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; font-size: 18px; font-family: Calibri; margin-left: 120px;}
+        
+.t4{color: #333333; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; font-size: 14px; font-family: Calibri; font-weight: bold;}
+        
+.t5{color: #bf1900; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; font-size: 14px; font-family: Calibri; font-weight: bold;}
+
+span.t6{color: #333333; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; alignment-baseline: central;}
+
+span.t7{color: #bf1900; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; margin-left: -30px;}
+
+p.texto1{padding-left: 50px; margin-left: 113px; margin-top: 105px; font-size: 24px; font-family: Calibri; font-weight: bold} 
+
+p.texto2{padding-left: 100px; margin-left: 113px; margin-top:10px; font-size: 24px; font-family: Calibri; font-weight: bold}

@@ -1,0 +1,75 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.1.xsd">
+ 
+ 	<context:annotation-config />
+	<context:component-scan base-package="br.com.assessoria" />
+ 
+ 	<!-- *** String encryptor *** -->
+	<bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="config" ref="customEnvironmentStringPBEConfig" />
+	</bean>
+
+	<!-- *** 'PlaceHolder' for properties replacement *** -->
+	<bean id="criptoPlaceHolderService"
+		class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer">
+		<constructor-arg ref="configurationEncryptor" />
+		<property name="location">
+			<value>classpath:assessoria.properties</value>
+		</property>
+		<property name="placeholderPrefix" value="%$[" />
+		<property name="placeholderSuffix" value="]" />
+	</bean>
+	
+ 	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/Elite" />
+		<property name="username" value="%$[user.bd]" />
+		<property name="password" value="cdwefv89pk" />
+   	</bean>
+
+		<!-- Backup routine configurations-->
+	<bean id="runMeTask" class="br.com.assessoria.util.teste" />
+
+	<bean id="runMeJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+
+		<property name="targetObject" ref="runMeTask" />
+		<property name="targetMethod" value="testeMetodo" />
+
+	</bean>
+
+	<!-- Cron Trigger -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+
+		<property name="jobDetail" ref="runMeJob" />
+		<!-- cronExpression = min hour dayOfMonth month dayOfWeek (Sunday=0) ? -->
+		<property name="cronExpression" value="%$[assessoria.routine.cronExpression]" />
+
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="runMeJob" />
+			</list>
+		</property>
+
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- end Backup routine configurations-->  
+
+</beans>

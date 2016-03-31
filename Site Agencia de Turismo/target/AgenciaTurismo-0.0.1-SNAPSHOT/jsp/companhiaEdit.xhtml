@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+        <h:head>
+            <link rel="icon" href="./resources/images/pdf.png" type="image/ico" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css" />
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/principal.css" />
+            <link  rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/styleCadastro.css"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilos.css" />  
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/menuCascata.css" />
+            <h:outputScript library="js" name="funcoes.js" />
+            <h:outputScript library="scripts" name="qualidadeAdsl.js" />
+	
+            <style type="text/css">
+                   .ui-layout-north {
+                          z-index:20 !important;
+                          overflow:visible !important;;
+                   }
+                  .ui-layout-north .ui-layout-unit-content {
+                          overflow:visible !important;
+                   }
+            </style>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Companhia</title>
+		
+		
+	</h:head>
+<h:body>
+    
+    <div id="container">
+        <div id="menu">
+           <ui:insert name="menu">
+           <ui:include src="menu.xhtml" />
+           </ui:insert>
+        </div>                                
+    </div>
+    <section>
+        
+        <div class="formulario">  
+              <!-- Topo da pagina -->
+      
+        <h:form  id="validate">                  
+            <p:dataTable var="item" value="#{CompanhiaBean.listCompanhia}"  id="tabela1">
+                   <p:column headerText="ID">                        
+                        <h:outputText value="#{item.id}"/>                                                   
+                    </p:column>
+                    <p:column headerText="NOME">
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
+                    <p:column headerText="CNPJ">
+                        <h:outputText value="#{item.cnpj}"/>                                    
+                    </p:column>
+                    <p:column headerText="DDD">
+                        <h:outputText value="#{item.ddd}"/>
+                    </p:column>
+                    <p:column headerText="Telefone">
+                         <h:outputText value="#{item.fone}"/>
+                    </p:column>
+                    <p:column headerText="Tipo Companhia">                        
+                        <h:outputText value="#{item.tipoCompanhia}"/>
+                    </p:column>                                                                          
+                </p:dataTable>
+            
+               <p:commandButton value="Editar" actionListener="#{CompanhiaBean.updateCompanhia()}" update="tabela1" />
+               <p:commandButton value="Apagar" actionListener="#{CompanhiaBean.removerCompanhia()}" update="tabela1" />     
+               
+               <ui:insert name="footer">
+                 <ui:include src="Footer.xhtml" />
+               </ui:insert>
+               
+          </h:form>
+    	</div><!--/formulario-->                
+    </section>    	
+</h:body>
+</html>

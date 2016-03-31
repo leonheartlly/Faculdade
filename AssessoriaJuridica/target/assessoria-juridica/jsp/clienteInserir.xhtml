@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<f:view>
+		<p:growl sticky="true" showSummary="true" autoUpdate="true" life="3000" />
+		<h:form id="form">
+			<div id="container">
+				<div id="menu">
+					<ui:insert name="menu">
+						<ui:include src="menu.xhtml" />
+					</ui:insert>
+				</div>
+					<div id="corpo">
+						<ui:insert name="corpo">
+							<br />
+							<br />
+							<br />
+							<p:panel header="Cadastrar Cliente">
+							<h:panelGrid style="font-size: 13px" columns="4"  >
+					               &nbsp; <h:outputLabel value="Nome:" for="nome" />
+					               &nbsp; <p:inputText id="nome" value="#{clienteBean.cliente.nomeCliente}" title="Nome" required="true" requiredMessage="O campo Nome é obrigatório." size="40"/>
+					               &nbsp; <h:outputLabel value="Nome Fantasia:" for="nomeFantasia" />
+					               &nbsp; <p:inputText id="nomeFantasia" value="#{clienteBean.cliente.nomeFantasia}" title="Nome Fantasia"  size="40"/>
+					               &nbsp; <h:outputLabel value="Número OAB:" for="numeroOab" />
+					               &nbsp; <p:inputText id="numeroOab" value="#{clienteBean.cliente.numeroOab}" title="Número OAB" required="true" requiredMessage="O campo Número OAB é obrigatório." size="20"/>
+					               &nbsp; <h:outputLabel value="CNPJ:" for="cnpj" />
+					               &nbsp; <p:inputText id="cnpj" value="#{clienteBean.cliente.cnpj}" title="CNPJ" required="true" requiredMessage="O campo CNPJ é obrigatório." size="20"/>
+					              
+				            </h:panelGrid>
+				            <br />
+				            <h3>Endereço</h3>
+					               
+					        <h:panelGrid style="font-size: 13px" columns="8">
+					               &nbsp; <h:outputLabel value="Logradouro:" for="logradouro" />
+					               &nbsp; <p:inputText id="logradouro" value="#{clienteBean.cliente.logradouro}" title="Logradouro" required="true" requiredMessage="O campo Logradouro é obrigatório." size="40"/>
+					               &nbsp; <h:outputLabel value="Número:" for="numero" />
+					               &nbsp; <p:inputText id="numero" value="#{clienteBean.cliente.numero}" title="Número" required="true" requiredMessage="O campo Número é obrigatório." size="10"/>
+					               &nbsp; <h:outputLabel value="Complemento:" for="complemento" />
+					               &nbsp; <p:inputText id="complemento" value="#{clienteBean.cliente.complemento}" title="Complemento" size="40"/> 
+					               &nbsp; <h:outputLabel value="Bairro:" for="bairro" />
+					               &nbsp; <p:inputText id="bairro" value="#{clienteBean.cliente.bairro}" title="Bairro" required="true" requiredMessage="O campo Bairro é obrigatório." size="23"/> 
+					               
+					               &nbsp;<h:outputText value="Cidade:" />  
+		        				   &nbsp;<p:selectOneMenu value="#{clienteBean.cliente.cidade}"  panelStyle="width:150px" effect="fade" var="p" style="width:168px"  filter="true" filterMatchMode="startsWith">  
+								            <f:selectItem itemLabel="Selecione Uma Cidade" itemValue="" />
+								            <f:selectItems value="#{clienteBean.getCidades()}" /> 
+								        </p:selectOneMenu>  
+					               
+					               &nbsp; <h:outputLabel value="CEP:" for="cep" />
+					               &nbsp; <p:inputText id="cep" value="#{clienteBean.cliente.cep}" title="CEP" required="true" requiredMessage="O campo CEP é obrigatório." size="23"/> 
+					               &nbsp; <h:outputLabel value="Telefone:" for="telefone" />
+					               &nbsp; <p:inputMask id="telefone" value="#{clienteBean.cliente.telefone}" title="Telefone" required="true" requiredMessage="O campo Telefone é obrigatório." size="23" mask="(99)9999-9999"/>
+					               &nbsp; <h:outputLabel value="Celular:" for="celular" />
+					               &nbsp; <p:inputMask id="celular" value="#{clienteBean.cliente.celular}"  title="Celular"  size="23" mask="(99)9999-9999" />
+					               &nbsp; <h:outputLabel value="Email:" for="email" />
+					               &nbsp; <p:inputText id="email" value="#{clienteBean.cliente.email}" title="Email" required="true" requiredMessage="O campo Email é obrigatório." 
+					               		  size="40" validatorMessage="Email invalido.">
+							                 <f:validateRegex	pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                						 </p:inputText> 
+					               
+				            </h:panelGrid>	
+							</p:panel>
+					         <br/>
+					         <p:commandButton value="Salvar" action="#{clienteBean.salvar}" ajax="false"/>
+								
+						</ui:insert>
+					</div>
+                 </div>
+		</h:form>
+	</f:view>
+
+</h:body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Bem Vindo!</title>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/homeLayout.css" />
+        <style type="text/css">
+            body{
+                background-image: url('#{request.contextPath}/resources/images/fundo.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div>
+            <header>
+                <h1>asdasdsadas</h1>
+                <div id="container">
+                    <div id="menu">
+                        <ui:insert name="menu">
+                            <ui:include src="menu.xhtml" />
+                        </ui:insert>
+                    </div>
+                </div>
+            </header>
+            <div id="Container2">
+                <nav>
+                    
+                    <section>
+                        <h4></h4>
+                        <h5>Aproveite...</h5>
+                        <div>
+                            <h2>Pacotes</h2>
+                            <p>Clique no link abaixo</p>
+                        </div>
+                        <span>
+                            <h:form>
+                                <h:commandButton value="Pacotes" action="pacote.xhtml"/>
+                            </h:form>
+                        </span>
+                        <br />
+                        <div>
+                            <h2>Hoteis</h2>
+                            <p>Hospede em um de nossos hoteis 5 estrelas</p>
+                        </div>
+                    </section>
+                </nav>
+                <section>
+                    <article>
+                        <header>
+                            <h1>Venha viajar conosco!!!</h1>
+                        </header>
+                        <img alt="Agende suas ferias." src="#{request.contextPath}/resources/images/ImagemHome1.png" width="400pt" height="350pt"/>
+                        <footer>
+                            <h2>Veja nossos Pacotes!</h2>
+                        </footer>
+                    </article>
+                    <article>
+                        <header>
+                            <h1>Otimos pacotes de Viagens</h1>
+                        </header>
+                        <img alt="Agende suas ferias." src="#{request.contextPath}/resources/images/ImagemHome3.png" width="400pt" height="350pt"/>
+                        <footer>
+                            <h2>Aproveite!!!</h2>
+                        </footer>
+                    </article>
+                </section>
+                <aside>
+                    <h3>Reservas</h3>
+                    <div>
+                        <p>Esta esperando o que</p>
+                        <p>Confira nossas promocoes</p>
+                    </div>
+                    <footer>
+                        <h2>Reservas</h2>
+                    </footer>
+                </aside>
+            </div>
+        </div>
+    </h:body>
+</html>
+

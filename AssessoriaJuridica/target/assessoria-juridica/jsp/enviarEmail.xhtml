@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+<f:view>
+		<p:growl sticky="true" showSummary="true" autoUpdate="true" life="3000" />
+		<h:form id="form">
+			<div id="container">
+				<div id="menu">
+					<ui:insert name="menu">
+						<ui:include src="menu.xhtml" />
+					</ui:insert>
+				</div>
+					<div id="corpo">
+						<ui:insert name="corpo">
+							<br/><br/>
+							<center>
+							<p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+								<f:facet name="start">
+										<br/><br/><br/><br/><br/><br/>
+										<h:graphicImage value="../resources/imagens/ajax-loading.gif" width="50" height="50"/>
+								</f:facet>
+		
+								<f:facet name="complete">
+									<h:outputText value="" />
+								</f:facet>
+							</p:ajaxStatus>
+							</center>
+							<p:panel header="Enviar E-mail">
+							<h:panelGrid style="font-size: 13px" columns="4"  >
+									<br />
+					               &nbsp; <h:outputLabel value="Destinatário:" for="destinatario" />
+					               &nbsp;<p:selectOneMenu value="#{enviarEmailBean.email.destinatario}" title="Destinatário}"  panelStyle="width:150px" effect="fade" var="p" style="width:200px"  filter="true" filterMatchMode="startsWith">  
+								        	<f:selectItem itemLabel="Selecione Um Cliente" itemValue="" />
+								        	<f:selectItems value="#{clienteBean.clientes}"  
+								        		var="item"
+								        		itemLabel="#{item.nomeCliente}"
+								        		itemValue="#{item.email}"/>
+								        </p:selectOneMenu>  
+					               <br />
+					               &nbsp; <h:outputLabel value="Assunto:" for="assunto" />
+					               &nbsp; <p:inputText id="assunto" value="#{enviarEmailBean.email.assunto}" title="Assunto" required="true" requiredMessage="O campo Assunto é obrigatório." size="40"/>		
+						    </h:panelGrid>
+						    <br />
+					 	    &nbsp;<p:editor id="editor" value="#{enviarEmailBean.email.texto}" width="600"/>
+
+						    <h:panelGrid columns="2" style="margin-top:10px">
+						        <p:commandButton  value="Enviar" action="#{enviarEmailBean.enviaEmailComAnexo}" update="form"  icon="ui-icon-disk" />
+						    </h:panelGrid>
+							</p:panel>
+
+						</ui:insert>
+					</div>
+                 </div>
+		</h:form>
+	</f:view>
+	<p:layoutUnit position="south" size="100">
+		<h:outputText value="Elton Camargo" />
+	</p:layoutUnit>
+	<p:layoutUnit position="south" size="100">
+		<h:outputText value="TESTE" />
+	</p:layoutUnit>
+	
+</h:body>
+
+</html>

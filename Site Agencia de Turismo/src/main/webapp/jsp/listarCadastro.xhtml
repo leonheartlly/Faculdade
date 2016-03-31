@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <!--  <meta charset="utf-8"/> -->
+        
+        <title>Cadastro</title>
+        
+        <link href='http://fonts.googleapis.com/css?family=OpenSans:300,400,700' rel='stylesheet' type='text/css'/>
+        <link  rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/styleCadastro.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/estilos.css" />  
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/menuCascata.css" />
+    </h:head>
+        <h:body  >
+       
+       
+        
+            <div id="container">
+				<div id="menu">
+					<ui:insert name="menu">
+						<ui:include src="menu.xhtml" />
+					</ui:insert>
+				</div>
+                
+            </div>
+     <section>
+    	 <div class="formulario">  
+              <!-- Topo da pagina -->
+     <h:form id="carForm">
+    <p:fieldset id="availableCarsField" legend="Clientes">
+        <p:dataTable id="availableCars" var="cliente" value="#{ClienteBean.listaClientes}">
+            <p:column style="width:20px">
+                <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
+                <p:draggable for="dragIcon" revert="true" helper="clone"/>
+            </p:column>
+ 
+            <p:column headerText="Id">
+                <h:outputText value="#{cliente.id_cliente}" />
+            </p:column>
+ 
+            <p:column headerText="Nome">
+                <h:outputText value="#{cliente.nome}" />
+            </p:column>
+ 
+            <p:column headerText="CPF">
+                <h:outputText value="#{cliente.cpf}" />
+            </p:column>
+ 
+            <p:column headerText="Opções">
+                  
+                <p:commandButton value="Update" ajax="false" action="goEditarCadastro" update="dadosCliente" actionListener="#{ClienteBean.updateCliente(cliente)}">  
+                    <p:graphicImage value="/resources/images/editar.png" width="30" height="30" />  
+                    </p:commandButton>  
+                <p:commandButton value="Remover" ajax="false" action="#{ClienteBean.removerCliente(cliente.username)}" update="dadosCliente">  
+                   <p:graphicImage value="/resources/images/delete.png" width="30" height="30" />  
+</p:commandButton>  
+            </p:column>
+        </p:dataTable>
+    </p:fieldset>
+ 
+
+         <p:commandButton value="Listar" ajax="false" action="#{ClienteBean.listarClientes()}" update="dadosCliente">  
+    
+</p:commandButton>  
+         
+    
+</h:form>
+
+         
+    	</div><!--/formulario-->
+                
+   
+</section>
+        
+   
+    </h:body>
+</html>
+

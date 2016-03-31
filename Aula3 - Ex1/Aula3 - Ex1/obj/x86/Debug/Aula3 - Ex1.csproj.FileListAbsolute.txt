@@ -1,0 +1,5 @@
+F:\workspace Visual Studio\Aula3 - Ex1\Aula3 - Ex1\bin\Debug\Aula3 - Ex1.exe
+F:\workspace Visual Studio\Aula3 - Ex1\Aula3 - Ex1\bin\Debug\Aula3 - Ex1.pdb
+F:\workspace Visual Studio\Aula3 - Ex1\Aula3 - Ex1\obj\x86\Debug\Aula3 - Ex1.exe
+F:\workspace Visual Studio\Aula3 - Ex1\Aula3 - Ex1\obj\x86\Debug\Aula3 - Ex1.pdb
+F:\workspace Visual Studio\Aula3 - Ex1\Aula3 - Ex1\obj\x86\Debug\Aula3 - Ex1.csprojResolveAssemblyReference.cache

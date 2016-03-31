@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:head>
+		<link rel="icon" href="./resources/images/pdf.png" type="image/ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/default.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/principal.css" />
+        <h:outputScript library="js" name="funcoes.js" />
+        <h:outputScript library="scripts" name="qualidadeAdsl.js" />
+	
+        <style type="text/css">
+               .ui-layout-north {
+                      z-index:20 !important;
+                      overflow:visible !important;;
+               }
+              .ui-layout-north .ui-layout-unit-content {
+                      overflow:visible !important;
+               }
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Unitur</title>
+		
+		
+	</h:head>
+	
+<h:body>
+		<div>
+			<h:graphicImage library="images" name=".jpg"/>
+		</div>
+	<br/>      
+	
+		
+	<h:form>  
+	     
+	    <p:menubar> 
+	    	<p:menuitem value="Home" url="/jsp/home.xhtml" icon="ui-icon-home" />
+	       
+	        <p:submenu label="Clientes" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	     
+	        </p:submenu>  
+                
+                <p:submenu label="Administração" icon="ui-icon-person">  
+                    <p:submenu label="Clientes" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu>  
+                
+                    
+                    <p:submenu label="Funcionário" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu>  
+                    
+                <p:submenu label="Hotel" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu>  
+                    
+                 
+                <p:submenu label="Destino" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu> 
+                    
+                    
+                <p:submenu label="Pacote" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu> 
+                    
+                    
+                <p:submenu label="Companhia" icon="ui-icon-person">  
+	            <p:menuitem value="Cadastrar" url="/jsp/cadastro.xhtml" icon="ui-icon-image"/>  
+	            <p:menuitem value="Editar/Deletar" url="/jsp/listarCadastro.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu>  
+                     
+                 </p:submenu>  
+                
+                 <p:submenu label="Relatório" icon="ui-icon-person">  
+                     <p:menuitem value="Gráfico" url="/jsp/grafico.xhtml" icon="ui-icon-document" />
+                     <p:menuitem value="Relatório" url="/jsp/relatorio.xhtml" icon="ui-icon-document" />
+	     
+	        </p:submenu>  
+                                 
+	            <p:menuitem value="Login" url="/jsp/login.xhtml" icon="ui-icon-document" />
+	           
+	      	<f:facet name="options">  
+        		<h:outputLink  value="#{request.contextPath}/j_spring_security_logout">Sair</h:outputLink>  
+        	</f:facet>  
+	    </p:menubar>
+	<!-- Dialog de status da tela após usuário efetuar alguma operação (LOADING)-->
+	<p:dialog modal="true" widgetVar="statusDialog" header="Processando. Aguarde..." draggable="false" closable="false" resizable="false">  
+    	<p:graphicImage library="images" name="progress_bar.gif" />  
+	</p:dialog> 
+  
+	</h:form>
+	
+	</h:body>
+</html>

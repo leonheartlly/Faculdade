@@ -1,0 +1,4 @@
+F:\workspace Visual Studio\Aula3 - Ex3\Aula3 - Ex3\bin\Debug\Aula3 - Ex3.exe
+F:\workspace Visual Studio\Aula3 - Ex3\Aula3 - Ex3\bin\Debug\Aula3 - Ex3.pdb
+F:\workspace Visual Studio\Aula3 - Ex3\Aula3 - Ex3\obj\x86\Debug\Aula3 - Ex3.exe
+F:\workspace Visual Studio\Aula3 - Ex3\Aula3 - Ex3\obj\x86\Debug\Aula3 - Ex3.pdb
