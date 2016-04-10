@@ -2,6 +2,8 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.List;
 
 
@@ -54,6 +56,7 @@ public class Categoria implements Serializable {
 		this.preco = preco;
 	}
 
+	@XmlTransient
 	public List<Veiculo> getVeiculos() {
 		return this.veiculos;
 	}

@@ -1,7 +1,10 @@
 package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -26,6 +29,8 @@ public class Funcionario implements Serializable {
 
 	private String telefone;
 
+	private List<Locacao> locacao;
+	
 	public Funcionario() {
 	}
 
@@ -52,6 +57,8 @@ public class Funcionario implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
+	
+	
 
 	public String getNome() {
 		return this.nome;
@@ -69,4 +76,14 @@ public class Funcionario implements Serializable {
 		this.telefone = telefone;
 	}
 
+	@XmlTransient
+	public List<Locacao> getLocacao() {
+		return locacao;
+	}
+
+	public void setLocacao(List<Locacao> locacao) {
+		this.locacao = locacao;
+	}
+
+	
 }

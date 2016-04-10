@@ -2,6 +2,8 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+
 import java.util.List;
 
 
@@ -10,6 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="multa")
 @NamedQuery(name="Multa.findAll", query="SELECT m FROM Multa m")
 public class Multa implements Serializable {
 	private static final long serialVersionUID = 1L;

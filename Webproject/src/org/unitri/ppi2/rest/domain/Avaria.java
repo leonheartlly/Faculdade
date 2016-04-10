@@ -2,6 +2,8 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.List;
 
 
@@ -10,7 +12,8 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Avaria.findAll", query="SELECT a FROM Avaria a")
+@Table(name="avaria")
+@NamedQuery(name="avaria.findAll", query="SELECT a FROM Avaria a")
 public class Avaria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -54,6 +57,7 @@ public class Avaria implements Serializable {
 		this.valor = valor;
 	}
 
+	@XmlTransient
 	public List<Locacao> getLocacaos() {
 		return this.locacaos;
 	}

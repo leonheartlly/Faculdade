@@ -2,6 +2,8 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.List;
 
 
@@ -89,6 +91,7 @@ public class Veiculo implements Serializable {
 		this.valor = valor;
 	}
 
+	@XmlTransient
 	public List<Locacao> getLocacaos() {
 		return this.locacaos;
 	}

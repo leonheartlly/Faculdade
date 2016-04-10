@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 public abstract class GenericDAO<T, K> implements DAO<T, K>  {
 	
 	private Class<T> entityClass;
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 
 	public GenericDAO(Class<T> entityClass, EntityManager entityManger) {
 		this.entityClass = entityClass;
