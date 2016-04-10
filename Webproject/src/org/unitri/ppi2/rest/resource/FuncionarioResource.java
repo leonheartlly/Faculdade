@@ -68,7 +68,7 @@ public class FuncionarioResource {
 	@Transactional
 	@Path("/{id:[0-9][0-9]*}")
 	public Response update(@PathParam("id") Integer id, final Funcionario funcionario) {
-		funcionario.setIdFuncionario(id);
+		funcionario.setIdfuncionario(id);
 		if (funcionarioDAO.findById(id) == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
@@ -84,7 +84,7 @@ public class FuncionarioResource {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		Funcionario p = new Funcionario();
-		p.setIdFuncionario(id);
+		p.setIdfuncionario(id);
 		funcionarioDAO.remove(p);
 		return Response.ok().build();
 	}

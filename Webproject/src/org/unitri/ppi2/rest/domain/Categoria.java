@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -17,13 +18,9 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_CATEGORIA")
 	private int idCategoria;
 
-	private String descricao;
-
-	private double preco;
+	private BigDecimal preco;
 
 	//bi-directional many-to-one association to Veiculo
 	@OneToMany(mappedBy="categoria")
@@ -40,19 +37,11 @@ public class Categoria implements Serializable {
 		this.idCategoria = idCategoria;
 	}
 
-	public String getDescricao() {
-		return this.descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public double getPreco() {
+	public BigDecimal getPreco() {
 		return this.preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 

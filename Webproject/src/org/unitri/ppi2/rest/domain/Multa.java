@@ -2,7 +2,7 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.util.List;
 
@@ -12,19 +12,14 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="multa")
 @NamedQuery(name="Multa.findAll", query="SELECT m FROM Multa m")
 public class Multa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_MULTA")
 	private int idMulta;
 
 	private String descricao;
-
-	private double valor;
 
 	//bi-directional many-to-many association to Locacao
 	@ManyToMany(mappedBy="multas")
@@ -49,14 +44,7 @@ public class Multa implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public double getValor() {
-		return this.valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
+	@XmlTransient
 	public List<Locacao> getLocacaos() {
 		return this.locacaos;
 	}

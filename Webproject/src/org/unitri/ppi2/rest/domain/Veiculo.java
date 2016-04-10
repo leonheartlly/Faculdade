@@ -17,19 +17,9 @@ public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_VEICULO")
 	private int idVeiculo;
 
-	private String ano;
-
 	private String marca;
-
-	private String modelo;
-
-	private String observacao;
-
-	private double valor;
 
 	//bi-directional many-to-one association to Locacao
 	@OneToMany(mappedBy="veiculo")
@@ -37,7 +27,7 @@ public class Veiculo implements Serializable {
 
 	//bi-directional many-to-one association to Categoria
 	@ManyToOne
-	@JoinColumn(name="ID_CATEGORIA")
+	@JoinColumn(name="idCategoria")
 	private Categoria categoria;
 
 	public Veiculo() {
@@ -51,44 +41,12 @@ public class Veiculo implements Serializable {
 		this.idVeiculo = idVeiculo;
 	}
 
-	public String getAno() {
-		return this.ano;
-	}
-
-	public void setAno(String ano) {
-		this.ano = ano;
-	}
-
 	public String getMarca() {
 		return this.marca;
 	}
 
 	public void setMarca(String marca) {
 		this.marca = marca;
-	}
-
-	public String getModelo() {
-		return this.modelo;
-	}
-
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
-	public String getObservacao() {
-		return this.observacao;
-	}
-
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
-
-	public double getValor() {
-		return this.valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 
 	@XmlTransient

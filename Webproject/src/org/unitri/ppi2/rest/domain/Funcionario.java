@@ -1,10 +1,8 @@
 package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
+import java.util.List;
 
 
 /**
@@ -17,37 +15,27 @@ public class Funcionario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_FUNCIONARIO")
-	private int idFuncionario;
-
-	private String endereco;
+	private int idfuncionario;
 
 	private String matricula;
 
-	private String nome;
+	//bi-directional many-to-one association to Locacao
+	@OneToMany(mappedBy="funcionario1")
+	private List<Locacao> locacaos1;
 
-	private String telefone;
+	//bi-directional many-to-one association to Locacao
+	@OneToMany(mappedBy="funcionario2")
+	private List<Locacao> locacaos2;
 
-	private List<Locacao> locacao;
-	
 	public Funcionario() {
 	}
 
-	public int getIdFuncionario() {
-		return this.idFuncionario;
+	public int getIdfuncionario() {
+		return this.idfuncionario;
 	}
 
-	public void setIdFuncionario(int idFuncionario) {
-		this.idFuncionario = idFuncionario;
-	}
-
-	public String getEndereco() {
-		return this.endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setIdfuncionario(int idfuncionario) {
+		this.idfuncionario = idfuncionario;
 	}
 
 	public String getMatricula() {
@@ -57,33 +45,49 @@ public class Funcionario implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
-	
 
-	public String getNome() {
-		return this.nome;
+	public List<Locacao> getLocacaos1() {
+		return this.locacaos1;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setLocacaos1(List<Locacao> locacaos1) {
+		this.locacaos1 = locacaos1;
 	}
 
-	public String getTelefone() {
-		return this.telefone;
+	public Locacao addLocacaos1(Locacao locacaos1) {
+		getLocacaos1().add(locacaos1);
+		locacaos1.setFuncionario1(this);
+
+		return locacaos1;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public Locacao removeLocacaos1(Locacao locacaos1) {
+		getLocacaos1().remove(locacaos1);
+		locacaos1.setFuncionario1(null);
+
+		return locacaos1;
 	}
 
-	@XmlTransient
-	public List<Locacao> getLocacao() {
-		return locacao;
+	public List<Locacao> getLocacaos2() {
+		return this.locacaos2;
 	}
 
-	public void setLocacao(List<Locacao> locacao) {
-		this.locacao = locacao;
+	public void setLocacaos2(List<Locacao> locacaos2) {
+		this.locacaos2 = locacaos2;
 	}
 
-	
+	public Locacao addLocacaos2(Locacao locacaos2) {
+		getLocacaos2().add(locacaos2);
+		locacaos2.setFuncionario2(this);
+
+		return locacaos2;
+	}
+
+	public Locacao removeLocacaos2(Locacao locacaos2) {
+		getLocacaos2().remove(locacaos2);
+		locacaos2.setFuncionario2(null);
+
+		return locacaos2;
+	}
+
 }
