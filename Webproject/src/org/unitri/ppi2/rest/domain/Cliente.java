@@ -2,6 +2,8 @@ package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
+
 import java.util.List;
 
 
@@ -42,6 +44,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 	}
 
+	@XmlTransient
 	public List<Locacao> getLocacaos() {
 		return this.locacaos;
 	}

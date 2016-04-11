@@ -48,6 +48,17 @@ public class AvariaResource {
 		}
 		return Response.ok(avaria).build();
 	}
+	
+	@GET
+	@Transactional
+	@Path("/locacao/{id:[0-9][0-9]*}")
+	public Response findByLocacao(@PathParam("id") final Integer id) {
+		List<Avaria> avarias = avariaDAO.findByLocacao(id);
+		if (avarias == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		return Response.ok(avarias).build();
+	}
 
 	@GET
 	@Transactional

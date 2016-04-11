@@ -72,6 +72,7 @@ public class Veiculo implements Serializable {
 		return locacao;
 	}
 
+	@XmlTransient
 	public Categoria getCategoria() {
 		return this.categoria;
 	}

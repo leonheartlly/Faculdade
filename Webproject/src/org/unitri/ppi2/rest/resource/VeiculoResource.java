@@ -2,6 +2,7 @@ package org.unitri.ppi2.rest.resource;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -49,6 +50,17 @@ public class VeiculoResource {
 		return Response.ok(veiculo).build();
 	}
 
+	@GET
+	@Transactional
+	@Path("/categoria/{preco:[0-9][0-9]*}")
+	public Response findByPreco(@PathParam("preco") final Integer preco) {
+		List<Veiculo> veiculos = veiculoDAO.findByPreco(preco);
+		if (veiculos == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		return Response.ok(veiculos).build();
+	}
+	
 	@GET
 	@Transactional
 	public List<Veiculo> listAll(@QueryParam("start") final Integer startPosition,

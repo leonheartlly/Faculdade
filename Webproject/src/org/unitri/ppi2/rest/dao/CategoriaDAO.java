@@ -15,7 +15,5 @@ public class CategoriaDAO extends GenericDAO<Categoria, Integer> implements Seri
 		super(Categoria.class, entityManager);
 	}	
 	
-	
-	
-	
+
 }
