@@ -70,6 +70,7 @@ public class AvariaResource {
 
 	@GET
 	@Transactional
+	@Path("/locacao/all")
 	public List<Avaria> listAll() {
 		final List<Avaria> avarias = avariaDAO.listAll();
 		return avarias;

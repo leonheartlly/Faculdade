@@ -59,6 +59,7 @@ public class ClienteResource {
 
 	@GET
 	@Transactional
+	@Path("/all")
 	public List<Cliente> listAll() {
 		final List<Cliente> clientes = clienteDAO.listAll();
 		return clientes;

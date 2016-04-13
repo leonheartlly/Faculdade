@@ -71,6 +71,7 @@ public class VeiculoResource {
 
 	@GET
 	@Transactional
+	@Path("/all")
 	public List<Veiculo> listAll() {
 		final List<Veiculo> veiculos = veiculoDAO.listAll();
 		return veiculos;

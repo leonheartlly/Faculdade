@@ -59,6 +59,7 @@ public class FuncionarioResource {
 
 	@GET
 	@Transactional
+	@Path("/all")
 	public List<Funcionario> listAll() {
 		final List<Funcionario> funcionarios = funcionarioDAO.listAll();
 		return funcionarios;

@@ -59,6 +59,7 @@ public class LocacaoResource {
 
 	@GET
 	@Transactional
+	@Path("/all")
 	public List<Locacao> listAll() {
 		final List<Locacao> locacaos = locacaoDAO.listAll();
 		return locacaos;
