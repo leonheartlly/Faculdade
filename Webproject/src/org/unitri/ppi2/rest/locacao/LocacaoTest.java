@@ -409,7 +409,7 @@ public class LocacaoTest {
 		l.setIdLocacao(1);
 
 		Cliente c = new Cliente();
-		c.setIdCliente(3);
+		c.setIdCliente(2);
 		c.setNome("Maria da Silva");
 
 		l.setCliente(c);
@@ -440,7 +440,7 @@ public class LocacaoTest {
 
 		// Update Locacao
 		c = new Cliente();
-		c.setIdCliente(4);
+		c.setIdCliente(3);
 		c.setNome("Joana da Fonseca");
 
 		l.setCliente(c);
@@ -451,7 +451,7 @@ public class LocacaoTest {
 
 		System.out.println("[Locacao] PUT: " + status);
 
-		//assertEquals(200, status);
+		assertEquals(200, status);
 
 		// Delete Locacao
 		response = target.request(MediaType.APPLICATION_JSON).delete();
