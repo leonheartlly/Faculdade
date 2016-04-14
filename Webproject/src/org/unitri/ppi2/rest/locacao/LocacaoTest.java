@@ -3,11 +3,13 @@ package org.unitri.ppi2.rest.locacao;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -36,19 +38,22 @@ public class LocacaoTest {
 	 */
 	
 	@Test
-	public void test01_createVeiculo(){
-
+	public void test01_createEntity(){
+		int idVeiculo = 1;
+		String marca = "Ford";
+		
 		ClientConfig clientConfig = new ClientConfig();
 		Client client = ClientBuilder.newClient(clientConfig);
 
 		WebTarget target = client.target(URL).path("/veiculo");
 
 		Veiculo v = new Veiculo();
-		v.setIdVeiculo(1);
-		v.setMarca("Ford");
+		v.setIdVeiculo(idVeiculo);
+		v.setMarca(marca);
 
 		Entity<Veiculo> entity = Entity.entity(v, MediaType.APPLICATION_JSON); 
 		
+		//Create Veiculo
 		Response response = target.request(MediaType.APPLICATION_JSON).post(entity, Response.class);
 		int status = response.getStatus();
 
@@ -57,9 +62,46 @@ public class LocacaoTest {
 		Veiculo veiculo = response.readEntity(Veiculo.class);
 		
 		assertEquals(200, status);
-		assertEquals(veiculo.getIdVeiculo(), 1);
-		assertEquals(veiculo.getMarca(), "Ford");
+		
+		//Read Veiculo
+		target = client.target(URL).path("/veiculo/"+idVeiculo);
+
+		response = target.request(MediaType.APPLICATION_JSON).get();
+		status = response.getStatus();
+
+		System.out.println("[Veiculo] GET: "+status);
+		
+		veiculo = response.readEntity(Veiculo.class);
+
+		assertEquals(200, status);
+		assertEquals(veiculo.getIdVeiculo(), idVeiculo);
+		assertEquals(veiculo.getMarca(), marca);
+		
+		//Update Veiculo
+		marca = "Fiat";
+				
+		v.setMarca(marca);
+				
+		entity = Entity.entity(v, MediaType.APPLICATION_JSON); 
+		response = target.request(MediaType.APPLICATION_JSON).put(entity, Response.class);
+		status = response.getStatus();
+
+		System.out.println("[Veiculo] PUT: "+status);
+		
+		assertEquals(200, status);
+
+		//Delete Veiculo
+		target = client.target(URL).path("/veiculo/"+idVeiculo);
+
+		response = target.request(MediaType.APPLICATION_JSON).delete();
+		status = response.getStatus();
+
+		System.out.println("[Veiculo] DELETE: "+status);
+
+		assertEquals(200, status);
+
 	}
+
 	
 	/*
 	 * Categoria
@@ -233,4 +275,29 @@ public class LocacaoTest {
 		assertEquals(200, status);
 		assertEquals(locacao.getIdLocacao(), 1);
 	}
+	
+	/*
+	 * Pesquisas
+	 */
+	@Test
+	public void test08_getMultasPorLocacao(){
+		GenericType<List<Multa>> LIST_MULTA_TYPE = new GenericType<List<Multa>>() {};
+		
+		ClientConfig clientConfig = new ClientConfig();
+		Client client = ClientBuilder.newClient(clientConfig);
+
+		WebTarget target = client.target(URL).path("/locacao/1");
+
+		Response response = target.request(MediaType.APPLICATION_JSON).get();
+		int status = response.getStatus();
+
+		System.out.println("[Multa por locacao] GET List: "+status);
+
+		List<Multa> multas = response.readEntity(LIST_MULTA_TYPE);
+
+		assertEquals(200, status);
+		assertEquals(1, multas.size());
+
+	}
+	
 }
