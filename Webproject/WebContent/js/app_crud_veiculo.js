@@ -41,6 +41,24 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 		$scope.veiculo = "";
 	};
 	
+	//Pesquisa por Categoria
+	function listarPorCategoria(categoria){
+		$http.get(urlBase +"/categoria/" + categoria.idCategoria)
+	    .then(function(response) {
+	        $scope.categoria = response.data;
+	        listar();
+	    }, function(response){
+	    	window.alert("Erro ao recuperar categoria(Chamada PUT)");
+	    });
+		
+		 $http.get(urlBase +"/veiculo/categoria/{preco:" + $scope.categoria.preco +"}")
+		    .then(function(response) {
+		        $scope.veiculos = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar veiculos por categoria (Chamada GET)");
+		    });
+	}
+	
 	function atualizar(veiculo) {
 		 $http.put(urlBase +"/veiculo/"+veiculo.idVeiculo, veiculo)
 		    .then(function(response) {
@@ -83,14 +101,8 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 	}
 
 	$scope.deletar = function() {
-//		var pos = getVeiculoPos($scope.veiculo);
-//		if($scope.veiculo != null) {
-//			if(window.confirm("Tem certeza??")) {
-				deletarVeiculo($scope.veiculo);
-//			}
-//		}else{
-//				window.alert("Não existe veiculo com este Id");
-//			}
+		deletarVeiculo($scope.veiculo);
+
 	};
 	
 	function getVeiculoPos(veiculo) {

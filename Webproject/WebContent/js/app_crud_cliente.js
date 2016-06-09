@@ -40,6 +40,16 @@ app.controller("ClienteCtrl", function($scope, $http) {
 		$scope.cliente = "";
 	};
 	
+	//Pesquisa por Mes
+	function listarPorLocacaoMes(mes){
+		 $http.get(urlBase +"/cliente/locacao/mes/{mes:" + mes + "}")
+		    .then(function(response) {
+		        $scope.clientes = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar clientes (Chamada GET)");
+		    });
+	}
+	
 	function atualizar(cliente) {
 		 $http.put(urlBase +"/cliente/"+cliente.idCliente, cliente)
 		    .then(function(response) {

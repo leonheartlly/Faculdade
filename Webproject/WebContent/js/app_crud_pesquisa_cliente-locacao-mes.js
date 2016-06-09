@@ -40,14 +40,7 @@ app.controller("PesquisaClienteLocMCtrl", function($scope, $http) {
 		$scope.cliente = "";
 	};
 	
-	function listarPorLocacaoMes(mes){
-		 $http.get(urlBase +"/cliente/locacao/mes/{mes:" + mes + "}")
-		    .then(function(response) {
-		        $scope.clientes = response.data;
-		    }, function(response){
-		    	window.alert("Erro ao listar clientes (Chamada GET)");
-		    });
-	}
+
 	
 })
 

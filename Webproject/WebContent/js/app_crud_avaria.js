@@ -38,6 +38,16 @@ app.controller("AvariaCtrl", function($scope, $http) {
 		$scope.avaria = "";
 	};
 	
+	//Pesquisa por locacao
+	function listarPorLocacao(locacao){
+		 $http.get(urlBase +"/avaria/locacao/{id:" + locacao.idLocacao + "}")
+		    .then(function(response) {
+		        $scope.avarias = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar avarias por locacao (Chamada GET)");
+		    });
+	}
+	
 	function atualizar(avaria) {
 		 $http.put(urlBase +"/avaria/"+avaria.idAvaria, avaria)
 		    .then(function(response) {

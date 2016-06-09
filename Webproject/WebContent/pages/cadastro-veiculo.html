@@ -74,6 +74,20 @@
 
 			</div>
 		</div>
+		
+		<!-- Pesquisa -->
+		<div id="main" class="container-fluid">
+			<h3 class="page-header">Pesquisar Veículos por Categoria</h3>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputId">ID da Categoria</label> <input type="text"
+						data-ng-model="categoria.idCategoria" class="form-control"
+						placeholder="Digite o ID da Categoria" />
+				</div>
+			<div class="form-group col-md-10">
+				<button ng-click="listarPorCategoria(categoria)" class="btn btn-success pull-right h2">Pesquisar</button>
+			</div>
+		</div>
 
 		<div id="main" class="container-fluid">
 			<div id="top" class="row">

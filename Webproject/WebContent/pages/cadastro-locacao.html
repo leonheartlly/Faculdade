@@ -80,6 +80,49 @@
 
 			</div>
 		</div>
+		
+				
+		<!-- Pesquisas -->
+		<div id="main" class="container-fluid">
+			<h3 class="page-header">Pesquisar Locações por Funcionario</h3>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputId">ID Funcionário</label> <input type="text"
+						data-ng-model="funcionario.idfuncionario" class="form-control"
+						placeholder="Digite o ID do Funcionário" />
+				</div>
+			<div class="form-group col-md-10">
+				<button ng-click="listarPorFuncionario(funcionario)" class="btn btn-success pull-right h2">Pesquisar por Funcionário</button>
+			</div>
+		</div>
+		
+				
+		<div id="main" class="container-fluid">
+			<h3 class="page-header">Pesquisar Locações por Veiculo</h3>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputId">ID Veículo</label> <input type="text"
+						data-ng-model="veiculo.idVeiculo" class="form-control"
+						placeholder="Digite o ID do Veículo" />
+				</div>
+			<div class="form-group col-md-10">
+				<button ng-click="listarPorVeiculo(veiculo)" class="btn btn-success pull-right h2">Pesquisar por Veículo</button>
+			</div>
+		</div>
+		
+				
+		<div id="main" class="container-fluid">
+			<h3 class="page-header">Pesquisar Locações por Mês</h3>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputId">Mês</label> <input type="text"
+						data-ng-model="mes" class="form-control"
+						placeholder="Digite o mês da Locação" />
+				</div>
+			<div class="form-group col-md-10">
+				<button ng-click="listarPorMes(mes)" class="btn btn-success pull-right h2">Pesquisar por Mês</button>
+			</div>
+		</div>
 
 		<div id="main" class="container-fluid">
 			<div id="top" class="row">

@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</nav>
-
+	
 	<div ng-app="crudAppLocacao" ng-controller="AvariaCtrl">
 		<div id="main" class="container-fluid">
 
@@ -57,6 +57,20 @@
 				<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
 				<button ng-click="salvar()" class="btn btn-success pull-right h2">Salvar</button>
 
+			</div>
+		</div>
+		
+		<!-- Pesquisa -->
+		<div id="main" class="container-fluid">
+			<h3 class="page-header">Pesquisar Avaria por Locação</h3>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="inputId">ID Locação</label> <input type="text"
+						data-ng-model="locacao.idLocacao" class="form-control"
+						placeholder="Digite o ID da Locação" />
+				</div>
+			<div class="form-group col-md-10">
+				<button ng-click="listarPorLocacao(locacao)" class="btn btn-success pull-right h2">Pesquisar</button>
 			</div>
 		</div>
 

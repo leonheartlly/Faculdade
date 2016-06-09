@@ -42,6 +42,36 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 		$scope.locacao = "";
 	};
 	
+	//Pesquisa por Funcionario
+	function listarPorFuncionario(funcionario){
+		 $http.get(urlBase +"/locacao/funcionario/{id:" + funcionario.idfuncionario + "}")
+		    .then(function(response) {
+		        $scope.locacoes = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar locacoes por funcionario (Chamada GET)");
+		    });
+	}
+	
+	//Pesquisa por Veiculo
+	function listarPorVeiculo(veiculo){
+		 $http.get(urlBase +"/locacao/veiculo/{id:" + veiculo.idVeiculo + "}")
+		    .then(function(response) {
+		        $scope.locacoes = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar locacoes por veiculo (Chamada GET)");
+		    });
+	}
+	
+	//Pesquisa por Mes
+	function listarPorMes(mes){
+		 $http.get(urlBase +"/locacao/mes/{mes:" + mes + "}")
+		    .then(function(response) {
+		        $scope.locacoes = response.data;
+		    }, function(response){
+		    	window.alert("Erro ao listar locacoes por mes (Chamada GET)");
+		    });
+	}
+	
 	function atualizar(locacao) {
 		 $http.put(urlBase +"/locacao/"+locacao.idlocacao, locacao)
 		    .then(function(response) {
