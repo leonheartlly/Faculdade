@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -17,9 +18,18 @@ public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVeiculo;
 
+	private int ano;
+
 	private String marca;
+
+	private String modelo;
+
+	private String observacao;
+
+	private BigDecimal valor;
 
 	//bi-directional many-to-one association to Locacao
 	@OneToMany(mappedBy="veiculo")
@@ -41,12 +51,44 @@ public class Veiculo implements Serializable {
 		this.idVeiculo = idVeiculo;
 	}
 
+	public int getAno() {
+		return this.ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
 	public String getMarca() {
 		return this.marca;
 	}
 
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return this.modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getObservacao() {
+		return this.observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public BigDecimal getValor() {
+		return this.valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	@XmlTransient
@@ -72,7 +114,6 @@ public class Veiculo implements Serializable {
 		return locacao;
 	}
 
-	@XmlTransient
 	public Categoria getCategoria() {
 		return this.categoria;
 	}

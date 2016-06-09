@@ -21,17 +21,11 @@ public class AvariaDAO extends GenericDAO<Avaria, Integer> implements Serializab
 		
 		Locacao locacao = entityManager.find(Locacao.class,id);
 		
-		List<Avaria> avarias = entityManager.createQuery("select ava from Avaria ava, Locacao loca "
-				+ "where loca. "
-						+ "and loca.idLocacao ="+locacao.getIdLocacao(), Avaria.class).getResultList();
-	
-//		TODO verificar como fazer o select abaixo com o framework
+		if(locacao == null){
+			return null;
+		}
 		
-//		select ava.descricao from locacao.avaria ava, locacao.locacao_avaria loca, locacao.locacao lolo
-//			where loca.idLocacao = loca.idAvaria 
-//				and lolo.idLocacao =1;
-		
-		return avarias;
+		return locacao.getAvarias();
 	}	
 	
 	

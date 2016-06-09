@@ -21,7 +21,7 @@ public class MultaDAO extends GenericDAO<Multa, Integer> implements Serializable
 	public List<Multa> findByLocacao(Integer id) {
 		Locacao locacao = entityManager.find(Locacao.class, id);
 		
-		List<Multa> multas = entityManager.createQuery("select moo from Multa moo", Multa.class).getResultList();
+		List<Multa> multas = entityManager.createQuery("select multas from Multa multas", Multa.class).getResultList();
 		List<Multa> multasRet = new ArrayList<Multa>();
 		for(Multa m : multas){
 			for(Locacao loc : m.getLocacaos()){

@@ -17,9 +17,12 @@ public class Multa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMulta;
 
 	private String descricao;
+
+	private Double valor;
 
 	//bi-directional many-to-many association to Locacao
 	@ManyToMany(mappedBy="multas")
@@ -42,6 +45,14 @@ public class Multa implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Double getValor() {
+		return this.valor;
+	}
+
+	public void setValor(double d) {
+		this.valor = d;
 	}
 
 	@XmlTransient

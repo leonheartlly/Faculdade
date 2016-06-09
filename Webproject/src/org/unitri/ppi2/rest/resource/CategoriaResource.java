@@ -59,7 +59,6 @@ public class CategoriaResource {
 	
 	@GET
 	@Transactional
-	@Path("/locacao/all")
 	public List<Categoria> listAll() {
 		final List<Categoria> categorias = categoriaDAO.listAll();
 		return categorias;

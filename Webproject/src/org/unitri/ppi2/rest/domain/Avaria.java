@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -17,9 +18,12 @@ public class Avaria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAvaria;
 
 	private String descricao;
+
+	private BigDecimal valor;
 
 	//bi-directional many-to-many association to Locacao
 	@ManyToMany(mappedBy="avarias")
@@ -42,6 +46,14 @@ public class Avaria implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public BigDecimal getValor() {
+		return this.valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	@XmlTransient

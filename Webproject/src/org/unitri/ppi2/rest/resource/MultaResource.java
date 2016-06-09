@@ -71,7 +71,6 @@ public class MultaResource {
 	
 	@GET
 	@Transactional
-	@Path("/all")
 	public List<Multa> listAll() {
 		final List<Multa> multas = multaDAO.listAll();
 		return multas;

@@ -1,15 +1,8 @@
 package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 
 
 /**
@@ -22,7 +15,12 @@ public class Locacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idLocacao;
+
+	private String data;
+
+	private String hora;
 
 	//bi-directional many-to-one association to Cliente
 	@ManyToOne
@@ -79,6 +77,22 @@ public class Locacao implements Serializable {
 
 	public void setIdLocacao(int idLocacao) {
 		this.idLocacao = idLocacao;
+	}
+
+	public String getData() {
+		return this.data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getHora() {
+		return this.hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
 	}
 
 	public Cliente getCliente() {

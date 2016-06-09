@@ -2,6 +2,7 @@ package org.unitri.ppi2.rest.resource;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -59,7 +60,6 @@ public class LocacaoResource {
 
 	@GET
 	@Transactional
-	@Path("/all")
 	public List<Locacao> listAll() {
 		final List<Locacao> locacaos = locacaoDAO.listAll();
 		return locacaos;
@@ -88,5 +88,32 @@ public class LocacaoResource {
 		p.setIdLocacao(id);
 		locacaoDAO.remove(p);
 		return Response.ok().build();
+	}
+	
+	@GET
+	@Transactional
+	@Path("/mes/{mes:[0-9][0-9]*}")
+	public Response findByMes(@PathParam("mes") Integer mes) {
+		if(mes < 0 || mes > 12){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		List<Locacao> locacaos = locacaoDAO.pesquisarPorMes(mes);
+		 return Response.ok(locacaos).build();
+	}
+	
+	@GET
+	@Transactional
+	@Path("/veiculo/{id:[0-9][0-9]*}")
+	public List<Locacao> findByVeiculo(@PathParam("id") final Integer id) {
+		List<Locacao> locacaos = locacaoDAO.pesquisarPorVeiculo(id);
+		return locacaos;
+	}
+	
+	@GET
+	@Transactional
+	@Path("/funcionario/{id:[0-9][0-9]*}")
+	public List<Locacao> findByFuncionario(@PathParam("id") final Integer id) {
+		List<Locacao> locacaos = locacaoDAO.pesquisarPorFuncionario(id);
+		return locacaos;
 	}
 }

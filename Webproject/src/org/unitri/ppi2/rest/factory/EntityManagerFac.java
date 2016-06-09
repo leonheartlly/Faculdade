@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 public class EntityManagerFac{
 
 	private static EntityManagerFactory emf;
+	private EntityManager manager;
 
 	@Produces
 	@RequestScoped
@@ -23,6 +24,7 @@ public class EntityManagerFac{
 	}
 
 	public void closeEntityManager(@Disposes EntityManager manager) {
+		this.manager = manager;
 		try {
 			manager.close();
 		}catch(Exception ex) {

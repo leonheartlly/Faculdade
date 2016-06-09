@@ -17,9 +17,16 @@ public class Funcionario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idfuncionario;
 
+	private String endereco;
+
 	private String matricula;
+
+	private String nome;
+
+	private String telefone;
 
 	//bi-directional many-to-one association to Locacao
 	@OneToMany(mappedBy="funcionario1")
@@ -40,12 +47,36 @@ public class Funcionario implements Serializable {
 		this.idfuncionario = idfuncionario;
 	}
 
+	public String getEndereco() {
+		return this.endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 	public String getMatricula() {
 		return this.matricula;
 	}
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	@XmlTransient

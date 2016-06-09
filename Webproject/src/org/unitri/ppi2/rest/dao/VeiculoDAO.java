@@ -24,11 +24,6 @@ public class VeiculoDAO extends GenericDAO<Veiculo, Integer> implements Serializ
 		List<Veiculo> veiculos = entityManager.createQuery("select vei from Veiculo vei,Categoria cat "
 				+ "where cat.idCategoria=vei.categoria "
 						+ "and cat.preco <="+categoria.getPreco(), Veiculo.class).getResultList();
-	
-//		select vei.marca from locacao.veiculo vei,locacao.categoria cat 
-//			where cat.idCategoria=vei.idCategoria 
-//				and cat.preco <= 45000;
-		
 		return veiculos;
 	}
 

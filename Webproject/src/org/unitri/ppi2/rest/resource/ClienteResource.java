@@ -59,7 +59,6 @@ public class ClienteResource {
 
 	@GET
 	@Transactional
-	@Path("/all")
 	public List<Cliente> listAll() {
 		final List<Cliente> clientes = clienteDAO.listAll();
 		return clientes;
@@ -88,5 +87,20 @@ public class ClienteResource {
 		p.setIdCliente(id);
 		clienteDAO.remove(p);
 		return Response.ok().build();
+	}
+	
+	@GET
+	@Transactional
+	@Path("/locacao/mes/{mes:[0-9][0-9]*}")
+	public Response findByClienteMes(@PathParam("mes") final Integer mes) {
+		if(mes < 0 || mes > 12){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
+		List<Cliente> clientes = clienteDAO.pesquisarPorLocacaoPorMes(mes);
+		if (clientes == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		return Response.ok(clientes).build();
 	}
 }
