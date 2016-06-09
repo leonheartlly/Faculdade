@@ -149,13 +149,16 @@
 												<th><a href="#" data-ng-click="ordena('data')">Data</a></th>
 												<th><a href="#" data-ng-click="ordena('hora')">Hora</a></th>
 												<th class="actions">Ações</th>
+												<th class="actions"></th>
+												<th class="actions"></th>
+												<th class="actions"></th>
 											</tr>
 										</thead>
 										<tbody>
 											<!-- Lista-->
 											<tr
-												data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao | filter:{'nome':varFiltro}"
-												style="cursor: pointer;">
+												data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao
+												style="cursor:pointer;">
 												<td>{{locacao.idLocacao}}</td>
 												<td>{{locacao.idVeiculo}}</td>
 												<td>{{locacao.idCliente}}</td>
@@ -165,11 +168,13 @@
 												<td>{{locacao.hora}}</td>
 												<td class="actions"><a class="btn btn-success btn-xs"
 													ng-click="prepararMulta(locacao)" href="#modalMulta">
-														Associar Multa</a> <a class="btn btn-primary btn-xs"
+														Associar Multa</a></td>
+												<td class="actions"><a class="btn btn-primary btn-xs"
 													ng-click="prepararAvaria(locacao)" href="#modalAvaria">
-														Associar Avaria</a> <a class="btn btn-warning btn-xs"
-													ng-click="seleciona(locacao)"> Editar</a> <a
-													class="btn btn-danger btn-xs"
+														Associar Avaria</a></td>
+												<td class="actions"><a class="btn btn-warning btn-xs"
+													ng-click="seleciona(locacao)"> Editar</a></td>
+												<td class="actions"><a class="btn btn-danger btn-xs"
 													ng-click="seleciona(locacao); deletar()">Excluir</a></td>
 											</tr>
 										</tbody>
@@ -182,9 +187,6 @@
 						<!-- /#main -->
 					</div>
 					<!-- /#init-->
-
-					<button type="button" class="btn btn-info btn-lg"
-						data-toggle="modal" data-target="#modalMulta">Open Modal</button>
 
 					<!-- Modal Multa-->
 					<div id="modalMulta" class="modal fade" role="dialog"
@@ -204,28 +206,26 @@
 												data-ng-model="multa.idMulta" class="form-control"
 												placeholder="ID auto" />
 										</div>
-										<div class="form-group col-md-2">
+										<div class="form-group col-md-3">
 											<label for="cpf">Valor</label> <input type="text"
 												data-ng-model="multa.valor" class="form-control"
 												placeholder="Digite aqui o valor" />
 										</div>
-										<div class="form-group col-md-3">
+										<div class="form-group col-md-8">
 											<label for="inputName">Descrição</label> <input type="text"
 												data-ng-model="multa.descricao" class="form-control"
 												placeholder="Digite aqui a descrição" />
 										</div>
 									</div>
 									<div class="form-group col-md-10">
-										<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
+										<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
+											Campos</button>
 										<button ng-click="salvar()"
-											class="btn btn-success pull-right h2">Salvar</button>
+											class="btn btn-success pull-right h2">Salvar Multa</button>
 
 									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Fechar</button>
-								</div>
+								<div class="modal-footer"></div>
 							</div>
 
 						</div>
@@ -233,10 +233,6 @@
 					<!-- //End Modal Multa -->
 
 					<!-- Modal Avaria -->
-					<button type="button" class="btn btn-info btn-lg"
-						data-toggle="modal" data-target="#modalAvaria">Open Modal</button>
-
-					<!-- Modal -->
 					<div id="modalAvaria" class="modal fade" role="dialog"
 						ng-app="crudAppLocacao" ng-controller="AvariaCtrl">
 						<div class="modal-dialog">
@@ -266,16 +262,14 @@
 										</div>
 									</div>
 									<div class="form-group col-md-10">
-										<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
+										<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
+											Campos</button>
 										<button ng-click="salvar()"
-											class="btn btn-success pull-right h2">Salvar</button>
+											class="btn btn-success pull-right h2">Salvar Avaria</button>
 
 									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-								</div>
+								<div class="modal-footer"></div>
 							</div>
 
 						</div>
