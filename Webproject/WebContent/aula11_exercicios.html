@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,10 +6,21 @@
 <title>Crud Pessoa</title>
 <script src="js/angular.js"></script>
 <script src="js/app_crud.js"></script>
+
 <style type="text/css">
-	button { width: 80px
+	button { 
+		width: 80px;
+	}
+	
+	input{
+		width: 180px;
+	}
+	.iconTam{
+		width: 32px;
+		height: 32px;
 	}
 </style>
+
 </head>
 <body data-ng-app="appPessoas">
 	<div data-ng-controller="PessoaCtrl" >
@@ -42,18 +54,27 @@
 			<button data-ng-click="deletar()">Deletar</button>
 		</div>
 		<br/>
+		<div> 
+			Nome: <input type="text" data-ng-model="varFiltro">
+		</div>
+		<br/>
 		<table border="1">
 			<tr>
-				<th>CPF</th>
-				<th>Nome</th>
+				<th><a href="#" data-ng-click="ordena('cpf')" >CPF</a></th>
+				<th><a href="#" data-ng-click="ordena('nome')">Nome</a></th>
 				<th>Endereço</th>
 				<th>Telefone</th>
+				<th>Editar</th>
+				<th>Deletar</th>
 			</tr>
-			<tr data-ng-repeat="pessoa in pessoas">
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.cpf}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.nome}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.endereco}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.fone}}</td>
+			<tr data-ng-repeat="pessoa in pessoas | orderBy:varOrdenacao | filter:{'nome':varFiltro}" style="cursor:pointer;">
+				<td>{{pessoa.cpf}}</td>
+				<td>{{pessoa.nome}}</td>
+				<td>{{pessoa.endereco}}</td>
+				<td>{{pessoa.fone}}</td>
+				<td data-ng-click="seleciona(pessoa)" style="text-align: center"><img src="images/edit-icon.png" class="iconTam"></td>
+				<td data-ng-click="seleciona(pessoa); deletar()" style="text-align: center"><img src="images/delete-icon.png" class="iconTam"></td>
+				
 			</tr>
 		</table>
 	</div>	

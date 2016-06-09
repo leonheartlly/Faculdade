@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Crud Cliente</title>
+<script src="js/angular.js"></script>
+<script src="js/app_crud_locacao.js"></script>
+
+<style type="text/css">
+	button { 
+		width: 80px;
+	}
+	
+	input{
+		width: 180px;
+	}
+	.iconTam{
+		width: 32px;
+		height: 32px;
+	}
+</style>
+
+</head>
+<body data-ng-app="crudAppLocacao">
+	<div data-ng-controller="ClienteCtrl" >
+		<h2>Cadastro de clientes</h2>
+		<table>
+			<tr>
+				<td><label>ID:</label></td>
+				<td><input type="text" 
+					data-ng-model="cliente.idCliente" /></td>
+			</tr>
+			<tr>
+				<td><label>CPF:</label></td>
+				<td><input type="text" 
+					data-ng-model="cliente.cpf" /></td>
+			</tr>
+			<tr>
+				<td><label>Nome:</label></td>
+				<td><input type="text" 
+					data-ng-model="cliente.nome" /></td>
+			</tr>
+			<tr>
+				<td><label>Endereço:</label></td>
+				<td><input type="text" 
+					data-ng-model="cliente.endereco" /></td>
+			</tr>
+			<tr>
+				<td><label>Telefone:</label></td>
+				<td><input type="text" 
+					data-ng-model="cliente.telefone" /></td>
+			</tr>			
+		</table>
+		<br/>
+		<div>
+			<button data-ng-click="novo()">Novo</button>
+			<button data-ng-click="salvar()">Salvar</button>
+			<button data-ng-click="deletar()">Deletar</button>
+		</div>
+		<br/>
+		<div> 
+			Nome: <input type="text" data-ng-model="varFiltro">
+		</div>
+		<br/>
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th><a href="#" data-ng-click="ordena('cpf')" >CPF</a></th>
+				<th><a href="#" data-ng-click="ordena('nome')">Nome</a></th>
+				<th>Endereço</th>
+				<th>Telefone</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			</tr>
+			<tr data-ng-repeat="cliente in clientes | orderBy:varOrdenacao | filter:{'nome':varFiltro}" style="cursor:pointer;">
+				<td>{{cliente.idCliente}}</td>
+				<td>{{cliente.cpf}}</td>
+				<td>{{cliente.nome}}</td>
+				<td>{{cliente.endereco}}</td>
+				<td>{{cliente.telefone}}</td>
+				<td data-ng-click="seleciona(cliente)" style="text-align: center"><img src="images/edit-icon.png" class="iconTam"></td>
+				<td data-ng-click="seleciona(cliente); deletar()" style="text-align: center"><img src="images/delete-icon.png" class="iconTam"></td>
+				
+			</tr>
+		</table>
+	</div>	
+</body>
+</html>

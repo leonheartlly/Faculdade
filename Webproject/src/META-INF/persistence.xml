@@ -10,7 +10,6 @@
 		<class>org.unitri.ppi2.rest.domain.Funcionario</class>
 		<class>org.unitri.ppi2.rest.domain.Locacao</class>
 		<class>org.unitri.ppi2.rest.domain.Multa</class>
-		<class>org.unitri.ppi2.rest.domain.Pessoa</class>
 		<class>org.unitri.ppi2.rest.domain.Veiculo</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>

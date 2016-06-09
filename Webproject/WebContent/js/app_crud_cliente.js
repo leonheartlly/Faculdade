@@ -2,7 +2,7 @@ var app = angular.module("crudAppLocacao", []);
 
 var urlBase = "http://localhost:8080/Webproject/rest";
 
-app.controller("LocacaoCtrl", function($scope, $http) {	
+app.controller("ClienteCtrl", function($scope, $http) {	
 	
 	function listar(){
 		 $http.get(urlBase +"/cliente")
