@@ -28,7 +28,7 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(veiculo) {
 			$scope.veiculo = veiculo;
-			new Veiculo(veiculo.marca, veiculo.modelo, veiculo.ano, veiculo.valor, veiculo.observacao); 	
+			new Veiculo(veiculo.ano, veiculo.marca, veiculo.modelo, veiculo.observacao, veiculo.valor, new Categoria()); 	
 	};
 	
 

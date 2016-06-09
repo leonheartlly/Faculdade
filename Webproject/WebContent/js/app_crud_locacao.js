@@ -93,35 +93,4 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 //				window.alert("Não existe locacao com este Id");
 //			}
 	};
-	
-	function getlocacaoPos(locacao) {
-		for(i=0; i<$scope.locacoes.length; i++) {
-			if($scope.locacoes[i].idCliente === locacao.idCliente) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	
-	function locacaoValida(locacao) {
-		var expRel = new RegExp("^\\d{3}\\.\\d{3}\\-\\d{2}$");
-		if(expRel.test(locacao.idCliente) && locacao.nome != null 
-			&& locacao.nome.length > 0 ) {
-			return true;
-		}
-		return false;
-	}
 })
-
-locacao = function(idVeiculo, idCliente, idFuncionario_cad, idFuncionario_ret, data, hora) {
-	this.idVeiculo = idVeiculo;
-	this.idCliente = idCliente;
-	this.idFuncionario_cad = idFuncionario_cad;
-	this.idFuncionario_ret = idFuncionario_ret;
-	this.data = data;
-	this.hora = hora;
-	
-	locacao.prototype.toString = function() {
-		return data + " " + hora;
-	};
-}

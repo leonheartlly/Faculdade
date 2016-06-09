@@ -25,7 +25,7 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(categoria) {
 			$scope.categoria = categoria;
-			new categoria(categoria.preco, categoria.descricao); 	
+			new Categoria(categoria.preco, categoria.descricao); 	
 	};
 	
 
