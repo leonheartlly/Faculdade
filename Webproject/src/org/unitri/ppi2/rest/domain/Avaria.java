@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +31,13 @@ public class Avaria implements Serializable {
 	private List<Locacao> locacaos;
 
 	public Avaria() {
+	}
+	
+	public Avaria(Locacao locacao){
+		this.descricao = "";
+		this.valor = new BigDecimal(0);
+		this.locacaos = new ArrayList<Locacao>();
+		this.locacaos.add(locacao);
 	}
 
 	public int getIdAvaria() {

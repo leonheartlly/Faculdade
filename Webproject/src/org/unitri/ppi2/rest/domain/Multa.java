@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,6 +30,13 @@ public class Multa implements Serializable {
 	private List<Locacao> locacaos;
 
 	public Multa() {
+	}
+	
+	public Multa(Locacao locacao){
+		this.descricao = "";
+		this.valor = 0.00;
+		this.locacaos = new ArrayList<Locacao>();
+		this.locacaos.add(locacao);
 	}
 
 	public int getIdMulta() {

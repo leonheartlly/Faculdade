@@ -29,10 +29,18 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(locacao) {
 			$scope.locacao = locacao;
-			new locacao(locacao.idVeiculo, locacao.idCliente, locacao.idFuncionario_cad, locacao.idFuncionario_ret, locacao.data, locacao.hora); 	
+			new Locacao(locacao.idVeiculo, locacao.idCliente, locacao.idFuncionario_cad, locacao.idFuncionario_ret, locacao.data, locacao.hora); 	
 	};
 	
-
+	//Inicializa Multa para o Modal
+	$scope.prepararMulta = function(locacao) {
+		$scope.multa = new Multa(locacao);
+	};
+	
+	//Inicializa Avaria para o Modal
+	$scope.prepararAvaria = function(locacao) {
+		$scope.avaria = new Avaria(locacao);	
+	};
 
 	$scope.ordena = function(ordena){
 		$scope.varOrdenacao = ordena;
@@ -114,13 +122,6 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	}
 
 	$scope.deletar = function() {
-//		var pos = getlocacaoPos($scope.locacao);
-//		if($scope.locacao != null) {
-//			if(window.confirm("Tem certeza??")) {
-				deletarlocacao($scope.locacao);
-//			}
-//		}else{
-//				window.alert("Não existe locacao com este Id");
-//			}
+		deletarlocacao($scope.locacao);
 	};
 })
