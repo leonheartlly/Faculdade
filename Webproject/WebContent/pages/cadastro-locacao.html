@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro Veiculo</title>
+<title>Cadastro Locacao</title>
 
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="../css/app.css" rel="stylesheet">
@@ -32,41 +32,47 @@
 		</div>
 	</nav>
 
-	<div ng-app="crudAppLocacao" ng-controller="VeiculoCtrl">
+	<div ng-app="crudAppLocacao" ng-controller="LocacaoCtrl">
 		<div id="main" class="container-fluid">
 
-			<h3 class="page-header">Cadastrar veiculo</h3>
+			<h3 class="page-header">Cadastrar Locação</h3>
 			<div class="row">
 				<div class="form-group col-md-1">
 					<label for="inputId">ID</label> <input type="text"
-						data-ng-model="veiculo.idVeiculo" class="form-control"
+						data-ng-model="locacao.idLocacao" class="form-control"
 						placeholder="ID auto" />
 				</div>
-				<div class="form-group col-md-2">
-					<label for="inputName">Marca</label> <input type="text"
-						data-ng-model="veiculo.marca" class="form-control"
-						placeholder="Digite aqui a marca" />
-				</div>
-				<div class="form-group col-md-2">
-					<label for="inputIdade">Modelo</label> <input type="text"
-						data-ng-model="veiculo.modelo" class="form-control"
-						placeholder="Digite aqui o modelo" />
+				<div class="form-group col-md-1">
+					<label for="cpf">Veiculo</label> <input type="text"
+						data-ng-model="locacao.idVeiculo" class="form-control"
+						placeholder="ID" />
 				</div>
 				<div class="form-group col-md-1">
-					<label for="inputPhone">Ano</label> <input type="text"
-						data-ng-model="veiculo.ano" class="form-control"
-						placeholder="Digite aqui o ano" />
+					<label for="cpf">Cliente</label> <input type="text"
+						data-ng-model="locacao.idCliente" class="form-control"
+						placeholder="ID" />
 				</div>
 				<div class="form-group col-md-2">
-					<label for="inputPhone">Valor</label> <input type="text"
-						data-ng-model="veiculo.valor" class="form-control"
-						placeholder="Digite aqui o valor" />
+					<label for="cpf">Funcionario Cadastro</label> <input type="text"
+						data-ng-model="locacao.idFuncionario_cad" class="form-control"
+						placeholder="ID" />
 				</div>
 				<div class="form-group col-md-2">
-					<label for="inputPhone">Observação</label> <input type="text"
-						data-ng-model="veiculo.observacao" class="form-control"
-						placeholder="Digite aqui as observações" />
+					<label for="cpf">Funcionario Recebimento</label> <input type="text"
+						data-ng-model="locacao.idFuncionario_rec" class="form-control"
+						placeholder="ID" />
 				</div>
+				<div class="form-group col-md-3">
+					<label for="inputName">Data</label> <input type="text"
+						data-ng-model="locacao.data" class="form-control"
+						placeholder="Digite aqui a data" />
+				</div>
+				<div class="form-group col-md-2">
+					<label for="inputIdade">Hora</label> <input type="text"
+						data-ng-model="locacao.hora" class="form-control"
+						placeholder="Digite aqui a hora" />
+				</div>
+
 			</div>
 			<div class="form-group col-md-10">
 				<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
@@ -87,31 +93,31 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>ID Categoria</th>
-									<th>Marca</th>
-									<th>Modelo</th>
-									<th><a href="#" data-ng-click="ordena('ano')">Ano</a></th>
-									<th><a href="#" data-ng-click="ordena('valor')">Valor</a></th>
-									<th>Observações</th>
+									<th>Veiculo</th>
+									<th>Cliente</th>
+									<th>Funcionario Cadastro</th>
+									<th>Funcionario Recebimento</th>
+									<th><a href="#" data-ng-click="ordena('data')">Data</a></th>
+									<th><a href="#" data-ng-click="ordena('hora')">Hora</a></th>
 									<th class="actions">Ações</th>
 								</tr>
 							</thead>
 							<tbody>
 								<!-- Lista-->
 								<tr
-									data-ng-repeat="veiculo in veiculos | orderBy:varOrdenacao "
+									data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao | filter:{'nome':varFiltro}"
 									style="cursor: pointer;">
-									<td>{{veiculo.idVeiculo}}</td>
-									<td>{{veiculo.idCategoria}}</td>
-									<td>{{veiculo.marca}}</td>
-									<td>{{veiculo.modelo}}</td>
-									<td>{{veiculo.ano}}</td>
-									<td>{{veiculo.valor}}</td>
-									<td>{{veiculo.observacao}}</td>
+									<td>{{locacao.idLocacao}}</td>
+									<td>{{locacao.idVeiculo}}</td>
+									<td>{{locacao.idCliente}}</td>
+									<td>{{locacao.idFuncionario_cad}}</td>
+									<td>{{locacao.idFuncionario_rec}}</td>
+									<td>{{locacao.data}}</td>
+									<td>{{locacao.hora}}</td>
 									<td class="actions"><a class="btn btn-warning btn-xs"
-										ng-click="seleciona(veiculo)"> Editar</a> <a
+										ng-click="seleciona(locacao)"> Editar</a> <a
 										class="btn btn-danger btn-xs"
-										ng-click="seleciona(veiculo); deletar()">Excluir</a></td>
+										ng-click="seleciona(locacao); deletar()">Excluir</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -130,6 +136,6 @@
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 
-		<script type="text/javascript" src="../js/app_crud_veiculo.js"></script>
+		<script type="text/javascript" src="../js/app_crud_locacao.js"></script>
 </body>
 </html>

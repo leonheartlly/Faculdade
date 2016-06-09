@@ -1,61 +1,107 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<title>Crud Pessoa</title>
-<script src="js/angular.js"></script>
-<script src="js/app_crud.js"></script>
-<style type="text/css">
-	button { width: 80px
-	}
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="shortcut icon" href="img/tasussa.jpeg" />
+<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/menu.css" rel="stylesheet"/>
+<title>TaSUSSA Motors</title>
 </head>
-<body data-ng-app="appPessoas">
-	<div data-ng-controller="PessoaCtrl" >
-		<h2>CRUD Pessoas AngularJs</h2>
-		<table>
-			<tr>
-				<td><label>CPF:</label></td>
-				<td><input type="text" 
-					data-ng-model="pessoa.cpf" /></td>
-			</tr>
-			<tr>
-				<td><label>Nome:</label></td>
-				<td><input type="text" 
-					data-ng-model="pessoa.nome" /></td>
-			</tr>
-			<tr>
-				<td><label>EndereÃ§o:</label></td>
-				<td><input type="text" 
-					data-ng-model="pessoa.endereco" /></td>
-			</tr>
-			<tr>
-				<td><label>Telefone:</label></td>
-				<td><input type="text" 
-					data-ng-model="pessoa.fone" /></td>
-			</tr>			
-		</table>
-		<br/>
-		<div>
-			<button data-ng-click="novo()">Novo</button>
-			<button data-ng-click="salvar()">Salvar</button>
-			<button data-ng-click="deletar()">Deletar</button>
-		</div>
-		<br/>
-		<table border="1">
-			<tr>
-				<th>CPF</th>
-				<th>Nome</th>
-				<th>EndereÃ§o</th>
-				<th>Telefone</th>
-			</tr>
-			<tr data-ng-repeat="pessoa in pessoas">
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.cpf}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.nome}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.endereco}}</td>
-				<td data-ng-click="seleciona(pessoa)">{{pessoa.fone}}</td>
-			</tr>
-		</table>
-	</div>	
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="index.html">TaSUSSA Motors</a> 
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+<!--             <li><a href="#">Dashboard</a></li> -->
+<!--             <li><a href="#">Settings</a></li> -->
+<!--             <li><a href="#">Profile</a></li> -->
+<!--             <li><a href="#">Help</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Cadastros <span class="sr-only">(current)</span></a></li>
+            <li><a href="pages/cadastro-veiculo.html" id="cadastroVeículo" onclick="this.valorTag" valorTag="cadastrarVeículo">Cadastrar Veículos</a></li>
+            <li><a href="pages/cadastro-categoria.html" id="cadastroCategoria" onclick="this.valorTag" valorTag="cadastrarCategoria">Cadastrar Categoria</a></li>
+              <li><a href="pages/cadastro-avaria.html" id="cadastroAvaria" onclick="this.valorTag" valorTag='cadastrarAvaria'>Cadastrar Avaria</a></li>
+              <li><a href="pages/cadastro-multa.html" id="cadastroMulta" onclick="this.valorTag" valorTag="cadastrarMulta">Cadastrar Multa</a></li>
+              <li><a href="pages/cadastro-cliente.html" id="cadastroCliente" onclick="this.valorTag" valorTag="cadastrarCliente">Cadastrar Cliente</a></li>
+              <li><a href="pages/cadastro-funcionario.html" id="cadastroFuncionario" onclick="this.valorTag" valorTag="cadastrarFuncionario">Cadastrar Funcionario</a></li>
+              <li><a href="pages/cadastro-locacao.html" id="cadastroLocacao" onclick="this.valorTag" valorTag="cadastrarLocacao">Cadastrar Locação</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+           <h1  class="page-header"> <img src="img/tasussa.jpeg" width="60px" height="50px" />TaSUSSA</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Multas por Locação</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Veículos por Categoria</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Avarias por Locação</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Locações por Funcionário</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+             <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Locações por Veículos</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+             <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Locações por Mês</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+             <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="150" height="150"  class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Cliente Ouro por mes</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Busca TaSUSSA</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 </body>
 </html>

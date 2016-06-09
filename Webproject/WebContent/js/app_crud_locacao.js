@@ -5,29 +5,31 @@ var urlBase = "http://localhost:8080/Webproject/rest";
 app.controller("LocacaoCtrl", function($scope, $http) {	
 	
 	function listar(){
-		 $http.get(urlBase +"/cliente")
+		 $http.get(urlBase +"/locacao")
 		    .then(function(response) {
-		        $scope.clientes = response.data;
+		        $scope.locacoes = response.data;
 		    }, function(response){
-		    	window.alert("Erro ao listar clientes(Chamada GET)");
+		    	window.alert("Erro ao listar locacoes(Chamada GET)");
 		    });
 	}
 	
 	listar();
 	
-	$scope.cliente = {
-			"cpf" : "",
-			"nome" : "",
-			"endereco" : "",
-			"telefone" : ""
+	$scope.locacao = {
+			"idVeiculo" : "",
+			"idCliente" : "",
+			"idFuncionario_cad" : "",
+			"idFuncionario_ret" : "",
+			"data" : "",
+			"hora" : ""
 		};
 	
 
 
 	
-	$scope.seleciona = function(cliente) {
-			$scope.cliente = cliente;
-			new Cliente(cliente.cpf, cliente.nome, cliente.endereco, cliente.telefone); 	
+	$scope.seleciona = function(locacao) {
+			$scope.locacao = locacao;
+			new locacao(locacao.idVeiculo, locacao.idCliente, locacao.idFuncionario_cad, locacao.idFuncionario_ret, locacao.data, locacao.hora); 	
 	};
 	
 
@@ -37,87 +39,89 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	};
 	
 	$scope.novo = function() {
-		$scope.cliente = "";
+		$scope.locacao = "";
 	};
 	
-	function atualizar(cliente) {
-		 $http.put(urlBase +"/cliente/"+cliente.idCliente, cliente)
+	function atualizar(locacao) {
+		 $http.put(urlBase +"/locacao/"+locacao.idlocacao, locacao)
 		    .then(function(response) {
-		        $scope.cliente = response.data;
+		        $scope.locacao = response.data;
 		        listar();
 		    }, function(response){
-		    	window.alert("Erro ao atualizar cliente(Chamada PUT)");
+		    	window.alert("Erro ao atualizar locacao(Chamada PUT)");
 		    });
 		
 	}
 	
-	function inserir(cliente) {
-		 $http.post(urlBase +"/cliente",cliente)
+	function inserir(locacao) {
+		 $http.post(urlBase +"/locacao",locacao)
 		    .then(function(response) {
-		        $scope.cliente = response.data;
+		        $scope.locacao = response.data;
 		        listar();
 		    }, function(response){
-		    	window.alert("Erro ao inserir cliente(Chamada POST)");
+		    	window.alert("Erro ao inserir locacao(Chamada POST)");
 		    });
 		
 	}
 	
 	$scope.salvar = function() {
-		if($scope.cliente.idCliente == null || $scope.cliente.idCliente =="") {
-			inserir($scope.cliente);
+		if($scope.locacao.idlocacao == null || $scope.locacao.idlocacao =="") {
+			inserir($scope.locacao);
 		} else {
-			atualizar($scope.cliente);
+			atualizar($scope.locacao);
 		}
 	}
 	
-	function deletarCliente(cliente) {
-		 $http['delete'](urlBase +"/cliente/" + cliente.idCliente)
+	function deletarlocacao(locacao) {
+		 $http['delete'](urlBase +"/locacao/" + locacao.idlocacao)
 		    .then(function(response) {
-		        $scope.cliente = "";
+		        $scope.locacao = "";
 		        listar();
 		    }, function(response){
-		    	window.alert("Erro ao deletar cliente(Chamada DELETE)");
+		    	window.alert("Erro ao deletar locacao(Chamada DELETE)");
 		    });
 		
 	}
 
 	$scope.deletar = function() {
-//		var pos = getClientePos($scope.cliente);
-//		if($scope.cliente != null) {
+//		var pos = getlocacaoPos($scope.locacao);
+//		if($scope.locacao != null) {
 //			if(window.confirm("Tem certeza??")) {
-				deletarCliente($scope.cliente);
+				deletarlocacao($scope.locacao);
 //			}
 //		}else{
-//				window.alert("Não existe cliente com este Id");
+//				window.alert("Não existe locacao com este Id");
 //			}
 	};
 	
-	function getClientePos(cliente) {
-		for(i=0; i<$scope.clientes.length; i++) {
-			if($scope.clientes[i].cpf === cliente.cpf) {
+	function getlocacaoPos(locacao) {
+		for(i=0; i<$scope.locacoes.length; i++) {
+			if($scope.locacoes[i].idCliente === locacao.idCliente) {
 				return i;
 			}
 		}
 		return -1;
 	}
 	
-	function clienteValida(cliente) {
+	function locacaoValida(locacao) {
 		var expRel = new RegExp("^\\d{3}\\.\\d{3}\\-\\d{2}$");
-		if(expRel.test(cliente.cpf) && cliente.nome != null 
-			&& cliente.nome.length > 0 ) {
+		if(expRel.test(locacao.idCliente) && locacao.nome != null 
+			&& locacao.nome.length > 0 ) {
 			return true;
 		}
 		return false;
 	}
 })
 
-Cliente = function(cpf, nome, endereco, telefone) {
-	this.cpf = cpf;
-	this.nome = nome;
-	this.endereco = endereco;
-	this.telefone = telefone;
+locacao = function(idVeiculo, idCliente, idFuncionario_cad, idFuncionario_ret, data, hora) {
+	this.idVeiculo = idVeiculo;
+	this.idCliente = idCliente;
+	this.idFuncionario_cad = idFuncionario_cad;
+	this.idFuncionario_ret = idFuncionario_ret;
+	this.data = data;
+	this.hora = hora;
 	
-	Cliente.prototype.toString = function() {
-		return nome + " " + cpf;
+	locacao.prototype.toString = function() {
+		return data + " " + hora;
 	};
 }

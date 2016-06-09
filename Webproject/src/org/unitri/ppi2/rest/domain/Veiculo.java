@@ -37,7 +37,7 @@ public class Veiculo implements Serializable {
 
 	//bi-directional many-to-one association to Categoria
 	@ManyToOne
-	@JoinColumn(name="idCategoria")
+	@JoinColumn(name="idCategoria", nullable = true)
 	private Categoria categoria;
 
 	public Veiculo() {
