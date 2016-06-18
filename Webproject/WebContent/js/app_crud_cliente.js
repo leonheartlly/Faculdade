@@ -42,7 +42,7 @@ app.controller("ClienteCtrl", function($scope, $http) {
 	
 	//Pesquisa por Mes
 	function listarPorLocacaoMes(mes){
-		 $http.get(urlBase +"/cliente/locacao/mes/{mes:" + mes + "}")
+		 $http.get(urlBase +"/cliente/locacao/mes/" + mes)
 		    .then(function(response) {
 		        $scope.clientes = response.data;
 		    }, function(response){

@@ -16,6 +16,7 @@ app.controller("FuncionarioCtrl", function($scope, $http) {
 	listar();
 	
 	$scope.funcionario = {
+			"id" : "",
 			"matricula" : "",
 			"nome" : "",
 			"endereco" : "",
@@ -27,7 +28,7 @@ app.controller("FuncionarioCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(funcionario) {
 			$scope.funcionario = funcionario;
-			new Funcionario(funcionario.matricula, funcionario.nome, funcionario.endereco, funcionario.telefone); 	
+			new Funcionario(funcionario.id, funcionario.matricula, funcionario.nome, funcionario.endereco, funcionario.telefone); 	
 	};
 	
 
@@ -111,7 +112,8 @@ app.controller("FuncionarioCtrl", function($scope, $http) {
 	}
 })
 
-Funcionario = function(matricula, nome, endereco, telefone) {
+Funcionario = function(id, matricula, nome, endereco, telefone) {
+	this.id = id;
 	this.matricula = matricula;
 	this.nome = nome;
 	this.endereco = endereco;

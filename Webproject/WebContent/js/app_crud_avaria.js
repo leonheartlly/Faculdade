@@ -16,16 +16,15 @@ app.controller("AvariaCtrl", function($scope, $http) {
 	listar();
 	
 	$scope.avaria = {
+			"id" : "",
 			"valor" : "",
 			"descricao" : ""
 		};
 	
-
-
 	
 	$scope.seleciona = function(avaria) {
 			$scope.avaria = avaria;
-			new avaria(avaria.valor, avaria.descricao); 	
+			new Avaria(avaria.id, avaria.valor, avaria.descricao); 	
 	};
 	
 
@@ -40,7 +39,7 @@ app.controller("AvariaCtrl", function($scope, $http) {
 	
 	//Pesquisa por locacao
 	function listarPorLocacao(locacao){
-		 $http.get(urlBase +"/avaria/locacao/{id:" + locacao.idLocacao + "}")
+		 $http.get(urlBase +"/avaria/locacao/" + locacao.idLocacao)
 		    .then(function(response) {
 		        $scope.avarias = response.data;
 		    }, function(response){
@@ -94,5 +93,8 @@ app.controller("AvariaCtrl", function($scope, $http) {
 	};
 })
 
-
-
+var Avaria = function(id, descricao, valor) {
+	this.id = id;
+	this.descricao = descricao;
+	this.valor = valor;
+};

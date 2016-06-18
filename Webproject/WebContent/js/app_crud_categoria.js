@@ -16,8 +16,9 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 	listar();
 	
 	$scope.categoria = {
-			"preco" : "",
-			"descricao" : ""
+			"idCategoria" : "",
+			"descricao" : "",
+			"preco" : ""
 		};
 	
 
@@ -25,7 +26,7 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(categoria) {
 			$scope.categoria = categoria;
-			new Categoria(categoria.preco, categoria.descricao); 	
+			new Categoria(categoria.idCategoria, categoria.descricao, categoria.preco); 	
 	};
 	
 
@@ -84,5 +85,9 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 	};
 })
 
-
+var Categoria = function(idCategoria, descricao, preco) {
+	this.idCategoria = idCategoria;
+	this.descricao = descricao;
+	this.preco = preco;
+};
 

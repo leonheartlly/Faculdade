@@ -52,7 +52,7 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	
 	//Pesquisa por Funcionario
 	function listarPorFuncionario(funcionario){
-		 $http.get(urlBase +"/locacao/funcionario/{id:" + funcionario.idfuncionario + "}")
+		 $http.get(urlBase +"/locacao/funcionario/" + funcionario.idfuncionario)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -62,7 +62,7 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	
 	//Pesquisa por Veiculo
 	function listarPorVeiculo(veiculo){
-		 $http.get(urlBase +"/locacao/veiculo/{id:" + veiculo.idVeiculo + "}")
+		 $http.get(urlBase +"/locacao/veiculo/" + veiculo.idVeiculo)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -72,7 +72,7 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	
 	//Pesquisa por Mes
 	function listarPorMes(mes){
-		 $http.get(urlBase +"/locacao/mes/{mes:" + mes + "}")
+		 $http.get(urlBase +"/locacao/mes/" + mes)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -125,3 +125,13 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 		deletarlocacao($scope.locacao);
 	};
 })
+
+var Locacao = function(idVeiculo, idCliente, idFuncionario_cad, idFuncionario_ret, data, hora) {
+	this.idVeiculo = idVeiculo;
+	this.idCliente = idCliente;
+	this.idFuncionario_cad = idFuncionario_cad;
+	this.idFuncionario_ret = idFuncionario_ret;
+	this.data = data;
+	this.hora = hora;
+};
+
