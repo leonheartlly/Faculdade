@@ -1,5 +1,6 @@
 package org.unitri.ppi2.rest.dao;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,18 +18,18 @@ public class VeiculoDAO extends GenericDAO<Veiculo, Integer> implements Serializ
 		super(Veiculo.class, entityManager);
 	}
 
-	public List<Veiculo> findByPreco(Integer id) {
+	public List<Veiculo> findByCategoria(Integer id) {
 
 		Categoria categoria = entityManager.find(Categoria.class,id);
 		
-		List<Veiculo> veiculos = entityManager.createQuery("select vei from Veiculo vei,Categoria cat "
-				+ "where cat.idCategoria=vei.categoria "
-						+ "and cat.preco <="+categoria.getPreco(), Veiculo.class).getResultList();
-		return veiculos;
+		List<Veiculo> veiculos = entityManager.createQuery("select vei from Veiculo vei", Veiculo.class).getResultList();
+		List<Veiculo> veiculosRest = new ArrayList<Veiculo>();
+		for(Veiculo v: veiculos){
+			if(v.getCategoria().getIdCategoria() == categoria.getIdCategoria()){
+				veiculosRest.add(v);
+			}
+		}
+		return veiculosRest;
 	}
-
-	
-	
-	
-	
+		
 }

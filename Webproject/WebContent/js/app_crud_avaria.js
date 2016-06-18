@@ -37,8 +37,13 @@ app.controller("AvariaCtrl", function($scope, $http) {
 		$scope.avaria = "";
 	};
 	
+	//Limpa a pesquisa
+	$scope.limpar = function(){
+		$scope.avarias = null;
+	}
+	
 	//Pesquisa por locacao
-	function listarPorLocacao(locacao){
+	$scope.listarPorLocacao = function(locacao){
 		 $http.get(urlBase +"/avaria/locacao/" + locacao.idLocacao)
 		    .then(function(response) {
 		        $scope.avarias = response.data;

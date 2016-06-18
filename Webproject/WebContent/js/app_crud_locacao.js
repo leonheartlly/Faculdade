@@ -50,8 +50,13 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 		$scope.locacao = "";
 	};
 	
+	//Limpa Pesquisa
+	$scope.limpar = function(){
+		$scope.locacoes = null;
+	}
+	
 	//Pesquisa por Funcionario
-	function listarPorFuncionario(funcionario){
+	$scope.listarPorFuncionario = function(funcionario){
 		 $http.get(urlBase +"/locacao/funcionario/" + funcionario.idfuncionario)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
@@ -61,7 +66,7 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	}
 	
 	//Pesquisa por Veiculo
-	function listarPorVeiculo(veiculo){
+	$scope.listarPorVeiculo = function(veiculo){
 		 $http.get(urlBase +"/locacao/veiculo/" + veiculo.idVeiculo)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
@@ -71,7 +76,7 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	}
 	
 	//Pesquisa por Mes
-	function listarPorMes(mes){
+	$scope.listarPorMes = function(mes){
 		 $http.get(urlBase +"/locacao/mes/" + mes)
 		    .then(function(response) {
 		        $scope.locacoes = response.data;

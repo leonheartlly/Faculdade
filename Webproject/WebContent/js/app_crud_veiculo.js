@@ -16,7 +16,7 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 	listar();
 	
 	$scope.veiculo = {
-			"idVeiculo" : "",
+			"id" : "",
 			"marca" : "",
 			"modelo" : "",
 			"ano" : "",
@@ -29,7 +29,7 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(veiculo) {
 			$scope.veiculo = veiculo;
-			new Veiculo(veiculo.idVeiculo, veiculo.ano, veiculo.marca, veiculo.modelo, veiculo.observacao, veiculo.valor); 	
+			new Veiculo(veiculo.id, veiculo.ano, veiculo.marca, veiculo.modelo, veiculo.observacao, veiculo.valor); 	
 	};
 	
 
@@ -42,17 +42,14 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 		$scope.veiculo = "";
 	};
 	
+	//Limpa lista
+	$scope.limpar = function(){
+		$scope.veiculos = null;
+	}
+	
 	//Pesquisa por Categoria
-	function listarPorCategoria(categoria){
-		$http.get(urlBase +"/categoria/" + categoria.idCategoria)
-	    .then(function(response) {
-	        $scope.categoria = response.data;
-	        listar();
-	    }, function(response){
-	    	window.alert("Erro ao recuperar categoria(Chamada PUT)");
-	    });
-		
-		 $http.get(urlBase +"/veiculo/categoria/" + $scope.categoria.preco)
+	$scope.listarPorCategoria = function(categoria){
+		 $http.get(urlBase +"/veiculo/categoria/" + categoria.idCategoria)
 		    .then(function(response) {
 		        $scope.veiculos = response.data;
 		    }, function(response){
@@ -120,8 +117,8 @@ app.controller("VeiculoCtrl", function($scope, $http) {
 	}
 })
 
-var Veiculo = function(idVeiculo, ano, marca, modelo, observacao, valor){
-	this.idVeiculo = idVeiculo;
+var Veiculo = function(id, ano, marca, modelo, observacao, valor){
+	this.id = id;
 	this.marca = marca;
 	this.modelo = modelo;
 	this.ano = ano;

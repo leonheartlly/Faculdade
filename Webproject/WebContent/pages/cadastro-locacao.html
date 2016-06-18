@@ -92,7 +92,7 @@
 						placeholder="Digite o ID do Funcionário" />
 				</div>
 				<div class="form-group col-md-10">
-					<button ng-click="listarPorFuncionario(funcionario)"
+					<button ng-click="limpar(); listarPorFuncionario(funcionario)"
 						class="btn btn-success pull-right h2">Pesquisar por
 						Funcionário</button>
 				</div>
@@ -108,7 +108,7 @@
 							placeholder="Digite o ID do Veículo" />
 					</div>
 					<div class="form-group col-md-10">
-						<button ng-click="listarPorVeiculo(veiculo)"
+						<button ng-click="limpar(); listarPorVeiculo(veiculo)"
 							class="btn btn-success pull-right h2">Pesquisar por
 							Veículo</button>
 					</div>
@@ -124,7 +124,7 @@
 								placeholder="Digite o mês da Locação" />
 						</div>
 						<div class="form-group col-md-10">
-							<button ng-click="listarPorMes(mes)"
+							<button ng-click="limpar(); listarPorMes(mes)"
 								class="btn btn-success pull-right h2">Pesquisar por Mês</button>
 						</div>
 					</div>
@@ -160,10 +160,10 @@
 												data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao
 												style="cursor:pointer;">
 												<td>{{locacao.idLocacao}}</td>
-												<td>{{locacao.idVeiculo}}</td>
-												<td>{{locacao.idCliente}}</td>
-												<td>{{locacao.idFuncionario_cad}}</td>
-												<td>{{locacao.idFuncionario_rec}}</td>
+												<td>{{locacao.veiculo.idVeiculo}}</td>
+												<td>{{locacao.cliente.idCliente}}</td>
+												<td>{{locacao.funcionario1.idfuncionario}}</td>
+												<td>{{locacao.funcionario2.idfuncionario}}</td>
 												<td>{{locacao.data}}</td>
 												<td>{{locacao.hora}}</td>
 												<td class="actions"><a class="btn btn-success btn-xs"

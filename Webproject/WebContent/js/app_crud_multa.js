@@ -39,8 +39,12 @@ app.controller("MultaCtrl", function($scope, $http) {
 		$scope.multa = "";
 	};
 	
+	$scope.limpar = function(){
+		$scope.multas = null;
+	}
+	
 	//Pesquisa por Locacao
-	function listarPorLocacao(locacao){
+	$scope.listarPorLocacao = function(locacao){
 		 $http.get(urlBase +"/multa/locacao/" + locacao.idLocacao)
 		    .then(function(response) {
 		        $scope.multas = response.data;
