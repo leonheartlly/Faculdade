@@ -2,10 +2,15 @@ var myApp = angular.module('crudAppLocacao', [ 'ui.router' ]);
 
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/index");
+	$urlRouterProvider.otherwise("/home");
 
 	$stateProvider
 
+	.state('home', {
+		url : '/home',
+		templateUrl : 'index.html'
+	})
+	
 	.state('cadastro-cliente', {
 		url : "/cadastro-cliente",
 		templateUrl : "pages/cadastro-cliente.html"
