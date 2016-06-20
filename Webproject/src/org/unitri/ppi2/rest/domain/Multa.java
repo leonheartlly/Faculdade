@@ -1,11 +1,13 @@
 package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -18,25 +20,25 @@ public class Multa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMulta;
 
 	private String descricao;
+	
+	private double valor;
 
-	private Double valor;
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 
 	//bi-directional many-to-many association to Locacao
 	@ManyToMany(mappedBy="multas")
 	private List<Locacao> locacaos;
 
 	public Multa() {
-	}
-	
-	public Multa(Locacao locacao){
-		this.descricao = "";
-		this.valor = 0.00;
-		this.locacaos = new ArrayList<Locacao>();
-		this.locacaos.add(locacao);
 	}
 
 	public int getIdMulta() {
@@ -53,14 +55,6 @@ public class Multa implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Double getValor() {
-		return this.valor;
-	}
-
-	public void setValor(double d) {
-		this.valor = d;
 	}
 
 	@XmlTransient

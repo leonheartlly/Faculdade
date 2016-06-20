@@ -52,9 +52,9 @@ public class VeiculoResource {
 
 	@GET
 	@Transactional
-	@Path("/categoria/{id:[0-9][0-9]*}")
-	public Response findByCategoria(@PathParam("id") final Integer id) {
-		List<Veiculo> veiculos = veiculoDAO.findByCategoria(id);
+	@Path("/categoria/{preco:[0-9][0-9]*}")
+	public Response findByPreco(@PathParam("preco") final Integer preco) {
+		List<Veiculo> veiculos = veiculoDAO.findByPreco(preco);
 		if (veiculos == null) {
 			return Response.status(Status.NOT_FOUND).build();
 		}

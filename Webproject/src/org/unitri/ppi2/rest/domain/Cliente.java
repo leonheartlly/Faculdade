@@ -1,10 +1,13 @@
 package org.unitri.ppi2.rest.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
-
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -17,16 +20,39 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCliente;
 
-	private String cpf;
-
-	private String endereco;
-
 	private String nome;
-
+	
+	private String cpf;
+	
+	private String endereco;
+	
 	private String telefone;
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
 	//bi-directional many-to-one association to Locacao
 	@OneToMany(mappedBy="cliente")
@@ -43,22 +69,6 @@ public class Cliente implements Serializable {
 		this.idCliente = idCliente;
 	}
 
-	public String getCpf() {
-		return this.cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getEndereco() {
-		return this.endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
 	public String getNome() {
 		return this.nome;
 	}
@@ -66,14 +76,8 @@ public class Cliente implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getTelefone() {
-		return this.telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
+	
+	
 
 	@XmlTransient
 	public List<Locacao> getLocacaos() {
