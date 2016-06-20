@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/appLocadora.css">
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+<link rel="shortcut icon" href="images/tasussa.jpeg" />
+<link href="css/menu.css" rel="stylesheet" />
+<title>TaSUSSA Motors</title>
+</head>
+
+<body ng-app="crudAppLocacao">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+
+				<a class="navbar-brand" href="" ui-sref="home">TaSUSSA Motors</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li><a href="" ui-sref="home">Home</a></li>
+					<li><a href="" ui-sref="clientes">Cadastro de cliente</a></li>
+					<li><a href="" ui-sref="funcionarios">Cadastro de
+							funcionários</a></li>
+					<li><a href="" ui-sref="categorias">Cadastro de categorias</a></li>
+					<li><a href="" ui-sref="multas">Cadastro de multas</a></li>
+					<li><a href="" ui-sref="veiculos">Cadastro de veiculos</a></li>
+					<li><a href="" ui-sref="avarias">Cadastro de avarias</a></li>
+					<li><a href="" ui-sref="locacoes">Locações</a></li>
+				</ul>
+			</div>
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header">
+					<img src="images/tasussa.jpeg" width="60px" height="50px" />TaSUSSA
+				</h1>
+
+				<div>
+					<div ui-view></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Libs -->
+	<script src="lib/angular.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
+	<script src="js/app.js"></script>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/bootstrap.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers.js"></script>
+	<script src="js/controller/clientes.js"></script>
+	<script src="js/controller/funcionarios.js"></script>
+	<script src="js/controller/veiculos.js"></script>
+	<script src="js/controller/categorias.js"></script>
+	<script src="js/controller/locacoes.js"></script>
+	<script src="js/controller/multas.js"></script>
+	<script src="js/controller/avarias.js"></script>
+
+
+</body>
+</html>

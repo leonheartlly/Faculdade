@@ -1,0 +1,147 @@
+<div>
+	<h2>Cadastro de Locações</h2>
+	<label for="locacao">ID LOCACAO</label> <input type="text"
+		data-ng-model="locacao.idLocacao" class="form-control"
+		placeholder="auto geravel" readonly="readonly" /> <br /> <label
+		for="veiculo">Veiculo</label> <input type="text"
+		data-ng-model="locacao.veiculo.idVeiculo" class="form-control"
+		placeholder="Id veiculo" /> <br /> <label for="cliente">Cliente</label>
+	<input type="text" data-ng-model="locacao.cliente.idCliente"
+		class="form-control" placeholder="Id cliente" /> <br /> <label
+		for="funcionarioCad">Funcionario Cadastro</label> <input type="text"
+		data-ng-model="locacao.funcionario1.idfuncionario"
+		class="form-control" placeholder="Id funcionario cad" /> <br /> <label
+		for="funcionarioRec">Funcionario Recebimento</label> <input
+		type="text" data-ng-model="locacao.funcionario2.idfuncionario"
+		class="form-control" placeholder="Id funcionario rec" /> <br /> <label
+		for="data">Data</label> <input type="text"
+		data-ng-model="locacao.data" class="form-control"
+		placeholder="digite a data no formato yyyy-mm-dd" /> <br /> <label
+		for="inputIdade">Hora</label> <input type="text"
+		data-ng-model="locacao.hora" class="form-control"
+		placeholder="Digite aqui a hora formato hh:mm" /> <br />
+
+	<div>
+		<button class="btn btn-primary" ng-click="novo()">Novo</button>
+		<button class="btn btn-success" ng-click="salvar()">Salvar</button>
+		<button class="btn btn-danger" ng-click="deletar()">Deletar</button>
+	</div>
+	<br />
+	
+	<!-- Tabela Multa -->
+	<label>Tabela auxiliar de Avarias</label>
+	<div class="table-responsive">
+		<table
+			class="table table-striped table-hover table-bordered table-condensed">
+			<tr>
+				<th>ID</th>
+				<th><a href="#" data-ng-click="ordena('nome')">DESCRIÇÃO</a></th>
+			</tr>
+			<tr data-ng-repeat="avaria in avarias" style="cursor: pointer;">
+				<td>{{avaria.idAvaria}}</td>
+				<td>{{avaria.descricao}}</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	<div class="form-group col-md-3">
+	<label for="avaria">ID Avaria</label> <input type="text"
+		data-ng-model="avaria.idAvaria" class="form-control"
+		placeholder="Digite o id da avaria" />  </div><br /> 
+		<br/>
+		<button class="btn btn-warning"
+			ng-click="associarAvaria(avaria)">Associar</button>
+	</div>
+
+
+	<!-- Tabela Multa -->
+	<label>Tabela auxiliar de Multas</label>
+	<div class="table-responsive">
+		<table
+			class="table table-striped table-hover table-bordered table-condensed">
+			<tr>
+				<th>ID</th>
+				<th><a href="#" data-ng-click="ordena('nome')">DESCRIÇÃO</a></th>
+				<th><a href="#" data-ng-click="ordena('valor')">VALOR</a></th>
+			</tr>
+			<tr data-ng-repeat="multa in multas" style="cursor: pointer;">
+				<td>{{multa.idMulta}}</td>
+				<td>{{multa.descricao}}</td>
+				<td>{{multa.valor}}</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	<div class="form-group col-md-3">
+	<label for="multa">ID Multa</label> <input type="text"
+		data-ng-model="multa.idMulta" class="form-control"
+		placeholder="Digite o id da multa" />  </div><br /> 
+		<br/>
+		<button class="btn btn-warning"
+			ng-click="associarMulta(multa)" >Associar</button>
+	</div>
+ 
+	<br />
+	<h2>PESQUISAS</h2>
+	<div>
+		<h3 class="page-header">Pesquisar Locações por Funcionario</h3>
+		<label for="inputId">ID Funcionário</label> <input type="text"
+			data-ng-model="funcionario.idfuncionario" class="form-control"
+			placeholder="Digite o ID do Funcionário" />
+		<button ng-click="listarPorFuncionario(funcionario)"
+			class="btn btn-warning">Pesquisar por Funcionário</button>
+	</div>
+	<div>
+		<h3 class="page-header">Pesquisar Locações por Veiculo</h3>
+		<label for="inputId">ID Veículo</label> <input type="text"
+			data-ng-model="veiculo.idVeiculo" class="form-control"
+			placeholder="Digite o ID do Veículo" />
+		<button ng-click="listarPorVeiculo(veiculo)" class="btn btn-warning">Pesquisar
+			por Veículo</button>
+	</div>
+	<div>
+		<h3>Pesquisar Locações por Mês</h3>
+		<label for="inputId">Mês</label> <input type="text"
+			data-ng-model="mes" class="form-control"
+			placeholder="Digite o mês da Locação" />
+		<button ng-click="listarPorMes(mes)" class="btn btn-warning">Pesquisar
+			por Mês</button>
+	</div>
+	<h3>Cadastros</h3>
+	<div class="table-responsive">
+		<table
+			class="table table-striped table-hover table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th><a href="#" data-ng-click="ordena('id')">ID</a></th>
+					<th><a href="#" data-ng-click="ordena('veiculo')">Veiculo</a></th>
+					<th>Cliente</th>
+					<th>Funcionario Cadastro</th>
+					<th>Funcionario Recebimento</th>
+					<th>Data</th>
+					<th>Hora</th>
+					<th>EDITAR</th>
+					<th>DELETAR</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					data-ng-repeat="locacao in locacoes | orderBy: varOrdenacao | filter: {'locacao':varFiltro}"
+					style="cursor: pointer;">
+					<td>{{locacao.idLocacao}}</td>
+					<td>{{locacao.veiculo.marca}}</td>
+					<td>{{locacao.cliente.nome}}</td>
+					<td>{{locacao.funcionario1.nome}}</td>
+					<td>{{locacao.funcionario2.nome}}</td>
+					<td>{{locacao.data}}</td>
+					<td>{{locacao.hora}}</td>
+					<td data-ng-click="seleciona(locacao)" style="text-align: center;"><img
+						src="images/edit-icon.png" class="tam1" /></td>
+					<td data-ng-click="seleciona(locacao); deletar()"
+						style="text-align: center;"><img src="images/delete-icon.png"
+						class="tam1" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<div>
+	<h2>Cadastro de categoria</h2>
+
+	<label for="id">ID:</label>
+ 		<input type="text" data-ng-model="categoria.idCategoria" readonly="readonly" class="form-control" placeholder="Id auto-gerável">
+ 	<br/>
+	<label for="descricao">Descrição:</label>
+ 		<input type="text" data-ng-model="categoria.descricao" class="form-control" placeholder="Descrição">
+ 	<br/>
+ 	<label for="preco">Preço:</label>
+ 		<input type="text" data-ng-model="categoria.preco" class="form-control" placeholder="Preço">
+ 	 <br/>
+	<br />
+	<div>
+		<button class="btn btn-primary" ng-click="novo()">Novo</button>
+		<button class="btn btn-success" ng-click="salvar()">Salvar</button>
+<!-- 		<button class="btn btn-danger" ng-click="deletar()">Deletar</button> -->
+	</div>
+	<br/>
+	<div>
+		<label for="filtro">Descrição:</label>
+  		<input type="text" ng-model="varFiltro" class="form-control" id="filtro">
+	<br/>
+	<div class="table-responsive">
+	<table class="table table-striped table-hover table-bordered table-condensed">
+		<tr>
+			<th><a href="#" data-ng-click="ordena('id')">ID</a></th>
+			<th><a href="#" data-ng-click="ordena('nome')">DESCRIÇÃO</a></th>
+			<th>PREÇO</th>
+			<th>EDITAR</th>
+			<th>DELETAR</th>
+		</tr>
+		<tr
+			data-ng-repeat="categoria in categorias | orderBy: varOrdenacao | filter: {'nome':varFiltro}"
+			style="cursor: pointer;">
+			<td data-ng-click="seleciona(categoria)">{{categoria.idCategoria}}</td>
+			<td data-ng-click="seleciona(categoria)">{{categoria.descricao}}</td>
+			<td data-ng-click="seleciona(categoria)">{{categoria.preco}}</td>
+			<td data-ng-click="seleciona(categoria)" style="text-align: center;"><img src="images/edit-icon.png" class="tam1" /></td>
+			<td data-ng-click="seleciona(categoria); deletar()" style="text-align: center;"><img src="images/delete-icon.png" class="tam1" /></td>
+		</tr>
+	</table>
+	</div>
+</div>

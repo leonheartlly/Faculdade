@@ -1,0 +1,10 @@
+angular.module('crudAppLocacao.controllers', 
+		['ClienteControllers',
+		 'FuncionarioControllers',
+		 'CategoriaControllers',
+		 'LocacaoControllers',
+		 'MultaControllers',
+		 'VeiculoControllers',
+		 'AvariaControllers'
+		 ]
+);
