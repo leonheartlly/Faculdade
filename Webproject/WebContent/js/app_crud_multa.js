@@ -16,7 +16,6 @@ app.controller("MultaCtrl", function($scope, $http) {
 	listar();
 	
 	$scope.multa = {
-			"id" : "",
 			"valor" : "",
 			"descricao" : ""
 		};
@@ -26,7 +25,7 @@ app.controller("MultaCtrl", function($scope, $http) {
 	
 	$scope.seleciona = function(multa) {
 			$scope.multa = multa;
-			new Multa(multa.id, multa.valor, multa.descricao); 	
+			new multa(multa.valor, multa.descricao); 	
 	};
 	
 
@@ -39,20 +38,15 @@ app.controller("MultaCtrl", function($scope, $http) {
 		$scope.multa = "";
 	};
 	
-	$scope.limpar = function(){
-		$scope.multas = null;
-	}
-	
 	//Pesquisa por Locacao
-	$scope.listarPorLocacao = function(locacao){
-		 $http.get(urlBase +"/multa/locacao/" + locacao.idLocacao)
+	function listarPorLocacao(locacao){
+		 $http.get(urlBase +"/multa/locacao/{id:" + locacao.idLocacao + "}")
 		    .then(function(response) {
 		        $scope.multas = response.data;
 		    }, function(response){
 		    	window.alert("Erro ao listar multas por locacao (Chamada GET)");
 		    });
-}
-	
+	}
 	
 	function atualizar(multa) {
 		 $http.put(urlBase +"/multa/"+multa.idMulta, multa)
@@ -101,10 +95,4 @@ app.controller("MultaCtrl", function($scope, $http) {
 })
 
 
-var Multa = function(id, valor, descricao) {
-	this.id = id;
-	this.valor = valor;
-	this.descricao = descricao;
-	
-}
 

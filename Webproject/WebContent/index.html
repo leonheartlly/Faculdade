@@ -8,7 +8,7 @@
 <link href="css/menu.css" rel="stylesheet" />
 <title>TaSUSSA Motors</title>
 </head>
-<body>
+<body ng-app="crudAppLocacao">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -38,97 +38,52 @@
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#">Cadastros <span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="pages/cadastro-veiculo.html" id="cadastroVeículo"
-						onclick="this.valorTag" valorTag="cadastrarVeículo">Cadastrar
+					<li><a href="" id="cadastroVeiculo" ui-sref="cadastro-veiculo">Cadastrar
 							Veículos</a></li>
-					<li><a href="pages/cadastro-categoria.html"
-						id="cadastroCategoria" onclick="this.valorTag"
-						valorTag="cadastrarCategoria">Cadastrar Categoria</a></li>
-					<li><a href="pages/cadastro-avaria.html" id="cadastroAvaria"
-						onclick="this.valorTag" valorTag='cadastrarAvaria'>Cadastrar
+					<li><a href="" id="cadastroCategoria"
+						ui-sref="cadastro-categoria">Cadastrar Categoria</a></li>
+					<li><a href="" id="cadastroAvaria" ui-sref="cadastro-avaria">Cadastrar
 							Avaria</a></li>
-					<li><a href="pages/cadastro-multa.html" id="cadastroMulta"
-						onclick="this.valorTag" valorTag="cadastrarMulta">Cadastrar
+					<li><a href="" id="cadastroMulta" ui-sref="cadastro-multa">Cadastrar
 							Multa</a></li>
-					<li><a href="pages/cadastro-cliente.html" id="cadastroCliente"
-						onclick="this.valorTag" valorTag="cadastrarCliente">Cadastrar
+					<li><a href="" id="cadastroCliente" ui-sref="cadastro-cliente">Cadastrar
 							Cliente</a></li>
-					<li><a href="pages/cadastro-funcionario.html"
-						id="cadastroFuncionario" onclick="this.valorTag"
-						valorTag="cadastrarFuncionario">Cadastrar Funcionario</a></li>
-					<li><a href="pages/cadastro-locacao.html" id="cadastroLocacao"
-						onclick="this.valorTag" valorTag="cadastrarLocacao">Cadastrar
+					<li><a href="" ui-sref="cadastro-funcionario">Cadastrar
+							Funcionario</a></li>
+					<li><a href="" id="cadastroLocacao" ui-sref="cadastro-locacao">Cadastrar
 							Locação</a></li>
 				</ul>
 			</div>
+
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">
 					<img src="img/tasussa.jpeg" width="60px" height="50px" />TaSUSSA
 				</h1>
 
-				<div class="row placeholders">
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-multa.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Multas por Locação" />
-							<h4>Multas por Locação</h4></a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-veiculo.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Veículos por Categoria" />
-							<h4>Veículos por Categoria</h4></a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-avaria.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Avarias por Locação" />
-							<h4>Avarias por Locação</h4>
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-locacao.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Locações por Funcionário" />
-							<h4>Locações por Funcionário</h4>
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-locacao.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Locações por Veículo" />
-							<h4>Locações por Veículo</h4>
-						</a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-locacao.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Locações por Mês" />
-							<h4>Locações por Mês</h4></a>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<a href="pages/cadastro-cliente.html"> <img
-							src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							width="150" height="150" class="img-responsive"
-							alt="Pesquisar Cliente que mais loca Veículos Por Mês" />
-							<h4>Cliente Ouro por Mês</h4>
-						</a>
-					</div>
-				</div>
 
 			</div>
 		</div>
 	</div>
+
+	<div>
+		<div ui-view></div>
+	</div>
+
+	<!-- Scripts -->
 	<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+
+	<!-- Controllers -->
+	<script type="text/javascript" src="js/app_crud_avaria.js"></script>
+	<script type="text/javascript" src="js/app_crud_categoria.js"></script>
+	<script type="text/javascript" src="js/app_crud_cliente.js"></script>
+	<script type="text/javascript" src="js/app_crud_funcionario.js"></script>
+	<script type="text/javascript" src="js/app_crud_locacao.js"></script>
+	<script type="text/javascript" src="js/app_crud_multa.js"></script>
+	<script type="text/javascript" src="js/app_crud_veiculo.js"></script>
+
 </body>
 </html>

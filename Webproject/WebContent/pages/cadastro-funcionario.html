@@ -1,124 +1,82 @@
+<div ng-app="crudAppLocacao" ng-controller="FuncionarioCtrl">
+	<div id="main" class="container-fluid">
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro Funcionario</title>
-
-<link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link href="../css/app.css" rel="stylesheet">
-</head>
-<body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="../index.html">TaSUSSA Motors</a>
+		<h3 class="page-header">Cadastrar pessoa</h3>
+		<div class="row">
+			<div class="form-group col-md-1">
+				<label for="inputId">ID</label> <input type="text"
+					data-ng-model="funcionario.idfuncionario" class="form-control"
+					placeholder="ID auto" />
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<!-- //TODO Navbar -->
-				</ul>
+			<div class="form-group col-md-2">
+				<label for="cpf">Matricula*</label> <input type="text"
+					data-ng-model="funcionario.matricula" class="form-control"
+					placeholder="Digite aqui a matricula" />
 			</div>
-		</div>
-	</nav>
-
-	<div ng-app="crudAppLocacao" ng-controller="FuncionarioCtrl">
-		<div id="main" class="container-fluid">
-
-			<h3 class="page-header">Cadastrar pessoa</h3>
-			<div class="row">
-				<div class="form-group col-md-1">
-					<label for="inputId">ID</label> <input type="text"
-						data-ng-model="funcionario.idfuncionario" class="form-control" 
-						placeholder="ID auto"/>
-				</div>
-				<div class="form-group col-md-2">
-					<label for="cpf">Matricula*</label> <input type="text"
-						data-ng-model="funcionario.matricula" class="form-control" 
-						placeholder="Digite aqui a matricula"/>
-				</div>
-				<div class="form-group col-md-3">
-					<label for="inputName">Nome</label> <input type="text"
-						data-ng-model="funcionario.nome" class="form-control"  
-						placeholder="Digite aqui o nome completo"/>
-				</div>
-				<div class="form-group col-md-2">
-					<label for="inputIdade">Endereço</label> <input type="text"
-						data-ng-model="funcionario.endereco" class="form-control"
-						placeholder="Digite aqui o endereço completo"/>
-				</div>
-				<div class="form-group col-md-4">
-					<label for="inputPhone">Telefone</label> <input type="text"
-						data-ng-model="funcionario.telefone" class="form-control" 
-						placeholder="Digite aqui o telefone"/>
-				</div>
+			<div class="form-group col-md-3">
+				<label for="inputName">Nome</label> <input type="text"
+					data-ng-model="funcionario.nome" class="form-control"
+					placeholder="Digite aqui o nome completo" />
 			</div>
-			<div class="form-group col-md-10">
-				<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
-				<button ng-click="salvar()" class="btn btn-success pull-right h2">Salvar</button>
-
+			<div class="form-group col-md-2">
+				<label for="inputIdade">Endereço</label> <input type="text"
+					data-ng-model="funcionario.endereco" class="form-control"
+					placeholder="Digite aqui o endereço completo" />
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPhone">Telefone</label> <input type="text"
+					data-ng-model="funcionario.telefone" class="form-control"
+					placeholder="Digite aqui o telefone" />
 			</div>
 		</div>
-		
-		<div id="main" class="container-fluid">
-			<div id="top" class="row">
-				<div class="col-sm-3">
-					<h3 class="page-header">Cadastros</h3>
-				</div>
-				<div id="list" class="row">
+		<div class="form-group col-md-10">
+			<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
+			<button ng-click="salvar()" class="btn btn-success pull-right h2">Salvar</button>
 
-					<div class="table-responsive col-md-12">
-						<table class="table table-striped" cellspacing="0" cellpadding="0">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th><a href="#" data-ng-click="ordena('matricula')">Matricula</a></th>
-									<th><a href="#" data-ng-click="ordena('nome')">Nome</a></th>
-									<th>Endereço</th>
-									<th>Telefone</th>
-									<th class="actions">Ações</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Lista-->
-								<tr data-ng-repeat="funcionario in funcionarios | orderBy:varOrdenacao | filter:{'nome':varFiltro}" style="cursor:pointer;">
-									<td>{{funcionario.idfuncionario}}</td>
-									<td>{{funcionario.matricula}}</td>
-									<td>{{funcionario.nome}}</td>
-									<td>{{funcionario.endereco}}</td>
-									<td>{{funcionario.telefone}}</td>
-									<td class="actions">
-										<a class="btn btn-warning btn-xs" ng-click="seleciona(funcionario)"> Editar</a> 
-										<a class="btn btn-danger btn-xs" ng-click="seleciona(funcionario); deletar()" >Excluir</a> 
-									</td>
-								</tr>	
-							</tbody>
-						</table>
-					</div>
-
-				</div>
-				<!-- /#list -->
-			</div>
-			<!-- /#main -->
 		</div>
-		<!-- /#init-->
+	</div>
 
-		<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="../lib/bootstrap/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../lib/angular/angular.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<div id="main" class="container-fluid">
+		<div id="top" class="row">
+			<div class="col-sm-3">
+				<h3 class="page-header">Cadastros</h3>
+			</div>
+			<div id="list" class="row">
 
-		<script type="text/javascript" src="../js/app_crud_funcionario.js"></script>
-</body>
-</html>
+				<div class="table-responsive col-md-12">
+					<table class="table table-striped" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th><a href="#" data-ng-click="ordena('matricula')">Matricula</a></th>
+								<th><a href="#" data-ng-click="ordena('nome')">Nome</a></th>
+								<th>Endereço</th>
+								<th>Telefone</th>
+								<th class="actions">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Lista-->
+							<tr
+								data-ng-repeat="funcionario in funcionarios | orderBy:varOrdenacao | filter:{'nome':varFiltro}"
+								style="cursor: pointer;">
+								<td>{{funcionario.idfuncionario}}</td>
+								<td>{{funcionario.matricula}}</td>
+								<td>{{funcionario.nome}}</td>
+								<td>{{funcionario.endereco}}</td>
+								<td>{{funcionario.telefone}}</td>
+								<td class="actions"><a class="btn btn-warning btn-xs"
+									ng-click="seleciona(funcionario)"> Editar</a> <a
+									class="btn btn-danger btn-xs"
+									ng-click="seleciona(funcionario); deletar()">Excluir</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<!-- /#list -->
+		</div>
+		<!-- /#main -->
+	</div>
+	<!-- /#init-->

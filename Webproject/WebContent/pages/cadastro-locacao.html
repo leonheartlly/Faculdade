@@ -1,288 +1,243 @@
+<div ng-app="crudAppLocacao" ng-controller="LocacaoCtrl">
+	<div id="main" class="container-fluid">
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro Locacao</title>
-
-<link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link href="../css/app.css" rel="stylesheet">
-</head>
-<body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="../index.html">TaSUSSA Motors</a>
+		<h3 class="page-header">Cadastrar Locação</h3>
+		<div class="row">
+			<div class="form-group col-md-1">
+				<label for="inputId">ID</label> <input type="text"
+					data-ng-model="locacao.idLocacao" class="form-control"
+					placeholder="ID auto" />
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<!-- //TODO Navbar -->
-				</ul>
+			<div class="form-group col-md-1">
+				<label for="cpf">Veiculo</label> <input type="text"
+					data-ng-model="locacao.idVeiculo" class="form-control"
+					placeholder="ID" />
 			</div>
+			<div class="form-group col-md-1">
+				<label for="cpf">Cliente</label> <input type="text"
+					data-ng-model="locacao.idCliente" class="form-control"
+					placeholder="ID" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="cpf">Funcionario Cadastro</label> <input type="text"
+					data-ng-model="locacao.idFuncionario_cad" class="form-control"
+					placeholder="ID" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="cpf">Funcionario Recebimento</label> <input type="text"
+					data-ng-model="locacao.idFuncionario_rec" class="form-control"
+					placeholder="ID" />
+			</div>
+			<div class="form-group col-md-3">
+				<label for="inputName">Data</label> <input type="text"
+					data-ng-model="locacao.data" class="form-control"
+					placeholder="Digite aqui a data" />
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputIdade">Hora</label> <input type="text"
+					data-ng-model="locacao.hora" class="form-control"
+					placeholder="Digite aqui a hora" />
+			</div>
+
 		</div>
-	</nav>
+		<div class="form-group col-md-10">
+			<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
+			<button ng-click="salvar()" class="btn btn-success pull-right h2">Salvar</button>
 
-	<div ng-app="crudAppLocacao" ng-controller="LocacaoCtrl">
-		<div id="main" class="container-fluid">
+		</div>
+	</div>
 
-			<h3 class="page-header">Cadastrar Locação</h3>
-			<div class="row">
-				<div class="form-group col-md-1">
-					<label for="inputId">ID</label> <input type="text"
-						data-ng-model="locacao.idLocacao" class="form-control"
-						placeholder="ID auto" />
-				</div>
-				<div class="form-group col-md-1">
-					<label for="cpf">Veiculo</label> <input type="text"
-						data-ng-model="locacao.idVeiculo" class="form-control"
-						placeholder="ID" />
-				</div>
-				<div class="form-group col-md-1">
-					<label for="cpf">Cliente</label> <input type="text"
-						data-ng-model="locacao.idCliente" class="form-control"
-						placeholder="ID" />
-				</div>
-				<div class="form-group col-md-2">
-					<label for="cpf">Funcionario Cadastro</label> <input type="text"
-						data-ng-model="locacao.idFuncionario_cad" class="form-control"
-						placeholder="ID" />
-				</div>
-				<div class="form-group col-md-2">
-					<label for="cpf">Funcionario Recebimento</label> <input type="text"
-						data-ng-model="locacao.idFuncionario_rec" class="form-control"
-						placeholder="ID" />
-				</div>
-				<div class="form-group col-md-3">
-					<label for="inputName">Data</label> <input type="text"
-						data-ng-model="locacao.data" class="form-control"
-						placeholder="Digite aqui a data" />
-				</div>
-				<div class="form-group col-md-2">
-					<label for="inputIdade">Hora</label> <input type="text"
-						data-ng-model="locacao.hora" class="form-control"
-						placeholder="Digite aqui a hora" />
-				</div>
 
+	<!-- Pesquisas -->
+	<div id="main" class="container-fluid">
+		<h3 class="page-header">Pesquisar Locações por Funcionario</h3>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="inputId">ID Funcionário</label> <input type="text"
+					data-ng-model="funcionario.idfuncionario" class="form-control"
+					placeholder="Digite o ID do Funcionário" />
 			</div>
 			<div class="form-group col-md-10">
-				<button ng-click="novo()" class="btn btn-primary pull-left h2">Novo</button>
-				<button ng-click="salvar()" class="btn btn-success pull-right h2">Salvar</button>
-
+				<button ng-click="listarPorFuncionario(funcionario)"
+					class="btn btn-success pull-right h2">Pesquisar por
+					Funcionário</button>
 			</div>
 		</div>
 
 
-		<!-- Pesquisas -->
 		<div id="main" class="container-fluid">
-			<h3 class="page-header">Pesquisar Locações por Funcionario</h3>
+			<h3 class="page-header">Pesquisar Locações por Veiculo</h3>
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label for="inputId">ID Funcionário</label> <input type="text"
-						data-ng-model="funcionario.idfuncionario" class="form-control"
-						placeholder="Digite o ID do Funcionário" />
+					<label for="inputId">ID Veículo</label> <input type="text"
+						data-ng-model="veiculo.idVeiculo" class="form-control"
+						placeholder="Digite o ID do Veículo" />
 				</div>
 				<div class="form-group col-md-10">
-					<button ng-click="limpar(); listarPorFuncionario(funcionario)"
+					<button ng-click="listarPorVeiculo(veiculo)"
 						class="btn btn-success pull-right h2">Pesquisar por
-						Funcionário</button>
+						Veículo</button>
 				</div>
 			</div>
 
 
 			<div id="main" class="container-fluid">
-				<h3 class="page-header">Pesquisar Locações por Veiculo</h3>
+				<h3 class="page-header">Pesquisar Locações por Mês</h3>
 				<div class="row">
 					<div class="form-group col-md-6">
-						<label for="inputId">ID Veículo</label> <input type="text"
-							data-ng-model="veiculo.idVeiculo" class="form-control"
-							placeholder="Digite o ID do Veículo" />
+						<label for="inputId">Mês</label> <input type="text"
+							data-ng-model="mes" class="form-control"
+							placeholder="Digite o mês da Locação" />
 					</div>
 					<div class="form-group col-md-10">
-						<button ng-click="limpar(); listarPorVeiculo(veiculo)"
-							class="btn btn-success pull-right h2">Pesquisar por
-							Veículo</button>
+						<button ng-click="listarPorMes(mes)"
+							class="btn btn-success pull-right h2">Pesquisar por Mês</button>
 					</div>
 				</div>
 
-
 				<div id="main" class="container-fluid">
-					<h3 class="page-header">Pesquisar Locações por Mês</h3>
-					<div class="row">
-						<div class="form-group col-md-6">
-							<label for="inputId">Mês</label> <input type="text"
-								data-ng-model="mes" class="form-control"
-								placeholder="Digite o mês da Locação" />
+					<div id="top" class="row">
+						<div class="col-sm-3">
+							<h3 class="page-header">Cadastros</h3>
 						</div>
-						<div class="form-group col-md-10">
-							<button ng-click="limpar(); listarPorMes(mes)"
-								class="btn btn-success pull-right h2">Pesquisar por Mês</button>
-						</div>
-					</div>
+						<div id="list" class="row">
 
-					<div id="main" class="container-fluid">
-						<div id="top" class="row">
-							<div class="col-sm-3">
-								<h3 class="page-header">Cadastros</h3>
-							</div>
-							<div id="list" class="row">
-
-								<div class="table-responsive col-md-12">
-									<table class="table table-striped" cellspacing="0"
-										cellpadding="0">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Veiculo</th>
-												<th>Cliente</th>
-												<th>Funcionario Cadastro</th>
-												<th>Funcionario Recebimento</th>
-												<th><a href="#" data-ng-click="ordena('data')">Data</a></th>
-												<th><a href="#" data-ng-click="ordena('hora')">Hora</a></th>
-												<th class="actions">Ações</th>
-												<th class="actions"></th>
-												<th class="actions"></th>
-												<th class="actions"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<!-- Lista-->
-											<tr
-												data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao
+							<div class="table-responsive col-md-12">
+								<table class="table table-striped" cellspacing="0"
+									cellpadding="0">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Veiculo</th>
+											<th>Cliente</th>
+											<th>Funcionario Cadastro</th>
+											<th>Funcionario Recebimento</th>
+											<th><a href="#" data-ng-click="ordena('data')">Data</a></th>
+											<th><a href="#" data-ng-click="ordena('hora')">Hora</a></th>
+											<th class="actions">Ações</th>
+											<th class="actions"></th>
+											<th class="actions"></th>
+											<th class="actions"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Lista-->
+										<tr
+											data-ng-repeat="locacao in locacoes | orderBy:varOrdenacao
 												style="cursor:pointer;">
-												<td>{{locacao.idLocacao}}</td>
-												<td>{{locacao.veiculo.idVeiculo}}</td>
-												<td>{{locacao.cliente.idCliente}}</td>
-												<td>{{locacao.funcionario1.idfuncionario}}</td>
-												<td>{{locacao.funcionario2.idfuncionario}}</td>
-												<td>{{locacao.data}}</td>
-												<td>{{locacao.hora}}</td>
-												<td class="actions"><a class="btn btn-success btn-xs"
-													ng-click="prepararMulta(locacao)" href="#modalMulta">
-														Associar Multa</a></td>
-												<td class="actions"><a class="btn btn-primary btn-xs"
-													ng-click="prepararAvaria(locacao)" href="#modalAvaria">
-														Associar Avaria</a></td>
-												<td class="actions"><a class="btn btn-warning btn-xs"
-													ng-click="seleciona(locacao)"> Editar</a></td>
-												<td class="actions"><a class="btn btn-danger btn-xs"
-													ng-click="seleciona(locacao); deletar()">Excluir</a></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-
-							</div>
-							<!-- /#list -->
-						</div>
-						<!-- /#main -->
-					</div>
-					<!-- /#init-->
-
-					<!-- Modal Multa-->
-					<div id="modalMulta" class="modal fade" role="dialog"
-						ng-app="crudAppLocacao" ng-controller="MultaCtrl">
-						<div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Cadastrar Multa</h4>
-								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="form-group col-md-1">
-											<label for="inputId">ID</label> <input type="text"
-												data-ng-model="multa.idMulta" class="form-control"
-												placeholder="ID auto" />
-										</div>
-										<div class="form-group col-md-3">
-											<label for="cpf">Valor</label> <input type="text"
-												data-ng-model="multa.valor" class="form-control"
-												placeholder="Digite aqui o valor" />
-										</div>
-										<div class="form-group col-md-8">
-											<label for="inputName">Descrição</label> <input type="text"
-												data-ng-model="multa.descricao" class="form-control"
-												placeholder="Digite aqui a descrição" />
-										</div>
-									</div>
-									<div class="form-group col-md-10">
-										<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
-											Campos</button>
-										<button ng-click="salvar()"
-											class="btn btn-success pull-right h2">Salvar Multa</button>
-
-									</div>
-								</div>
-								<div class="modal-footer"></div>
+											<td>{{locacao.idLocacao}}</td>
+											<td>{{locacao.idVeiculo}}</td>
+											<td>{{locacao.idCliente}}</td>
+											<td>{{locacao.idFuncionario_cad}}</td>
+											<td>{{locacao.idFuncionario_rec}}</td>
+											<td>{{locacao.data}}</td>
+											<td>{{locacao.hora}}</td>
+											<td class="actions"><a class="btn btn-success btn-xs"
+												ng-click="prepararMulta(locacao)" href="#modalMulta">
+													Associar Multa</a></td>
+											<td class="actions"><a class="btn btn-primary btn-xs"
+												ng-click="prepararAvaria(locacao)" href="#modalAvaria">
+													Associar Avaria</a></td>
+											<td class="actions"><a class="btn btn-warning btn-xs"
+												ng-click="seleciona(locacao)"> Editar</a></td>
+											<td class="actions"><a class="btn btn-danger btn-xs"
+												ng-click="seleciona(locacao); deletar()">Excluir</a></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 
 						</div>
+						<!-- /#list -->
 					</div>
-					<!-- //End Modal Multa -->
+					<!-- /#main -->
+				</div>
+				<!-- /#init-->
 
-					<!-- Modal Avaria -->
-					<div id="modalAvaria" class="modal fade" role="dialog"
-						ng-app="crudAppLocacao" ng-controller="AvariaCtrl">
-						<div class="modal-dialog">
+				<!-- Modal Multa-->
+				<div id="modalMulta" class="modal fade" role="dialog"
+					ng-app="crudAppLocacao" ng-controller="MultaCtrl">
+					<div class="modal-dialog">
 
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Cadastrar Avaria</h4>
-								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="form-group col-md-1">
-											<label for="inputId">ID</label> <input type="text"
-												data-ng-model="avaria.idAvaria" class="form-control"
-												placeholder="ID auto" />
-										</div>
-										<div class="form-group col-md-3">
-											<label for="cpf">Valor</label> <input type="text"
-												data-ng-model="avaria.valor" class="form-control"
-												placeholder="Digite aqui o valor" />
-										</div>
-										<div class="form-group col-md-8">
-											<label for="inputName">Descrição</label> <input type="text"
-												data-ng-model="avaria.descricao" class="form-control"
-												placeholder="Digite aqui a descrição" />
-										</div>
-									</div>
-									<div class="form-group col-md-10">
-										<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
-											Campos</button>
-										<button ng-click="salvar()"
-											class="btn btn-success pull-right h2">Salvar Avaria</button>
-
-									</div>
-								</div>
-								<div class="modal-footer"></div>
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Cadastrar Multa</h4>
 							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="form-group col-md-1">
+										<label for="inputId">ID</label> <input type="text"
+											data-ng-model="multa.idMulta" class="form-control"
+											placeholder="ID auto" />
+									</div>
+									<div class="form-group col-md-3">
+										<label for="cpf">Valor</label> <input type="text"
+											data-ng-model="multa.valor" class="form-control"
+											placeholder="Digite aqui o valor" />
+									</div>
+									<div class="form-group col-md-8">
+										<label for="inputName">Descrição</label> <input type="text"
+											data-ng-model="multa.descricao" class="form-control"
+											placeholder="Digite aqui a descrição" />
+									</div>
+								</div>
+								<div class="form-group col-md-10">
+									<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
+										Campos</button>
+									<button ng-click="salvar()"
+										class="btn btn-success pull-right h2">Salvar Multa</button>
 
+								</div>
+							</div>
+							<div class="modal-footer"></div>
 						</div>
+
 					</div>
-					<!-- //End Modal Avaria -->
+				</div>
+				<!-- //End Modal Multa -->
 
-					<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
-					<script type="text/javascript"
-						src="../lib/bootstrap/bootstrap.min.js"></script>
-					<script type="text/javascript" src="../lib/angular/angular.js"></script>
-					<script
-						src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+				<!-- Modal Avaria -->
+				<div id="modalAvaria" class="modal fade" role="dialog"
+					ng-app="crudAppLocacao" ng-controller="AvariaCtrl">
+					<div class="modal-dialog">
 
-					<script type="text/javascript" src="../js/app_crud_locacao.js"></script>
-</body>
-</html>
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Cadastrar Avaria</h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="form-group col-md-1">
+										<label for="inputId">ID</label> <input type="text"
+											data-ng-model="avaria.idAvaria" class="form-control"
+											placeholder="ID auto" />
+									</div>
+									<div class="form-group col-md-3">
+										<label for="cpf">Valor</label> <input type="text"
+											data-ng-model="avaria.valor" class="form-control"
+											placeholder="Digite aqui o valor" />
+									</div>
+									<div class="form-group col-md-8">
+										<label for="inputName">Descrição</label> <input type="text"
+											data-ng-model="avaria.descricao" class="form-control"
+											placeholder="Digite aqui a descrição" />
+									</div>
+								</div>
+								<div class="form-group col-md-10">
+									<button ng-click="novo()" class="btn btn-primary pull-left h2">Limpar
+										Campos</button>
+									<button ng-click="salvar()"
+										class="btn btn-success pull-right h2">Salvar Avaria</button>
+
+								</div>
+							</div>
+							<div class="modal-footer"></div>
+						</div>
+
+					</div>
+				</div>
+				<!-- //End Modal Avaria -->

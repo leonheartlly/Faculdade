@@ -40,14 +40,9 @@ app.controller("ClienteCtrl", function($scope, $http) {
 		$scope.cliente = "";
 	};
 	
-	//Limpa lista
-	$scope.limpar = function(){
-		$scope.clientes = null;
-	}
-	
 	//Pesquisa por Mes
-	$scope.listarPorLocacaoMes = function(mes){
-		 $http.get(urlBase +"/cliente/locacao/mes/" + mes)
+	function listarPorLocacaoMes(mes){
+		 $http.get(urlBase +"/cliente/locacao/mes/{mes:" + mes + "}")
 		    .then(function(response) {
 		        $scope.clientes = response.data;
 		    }, function(response){

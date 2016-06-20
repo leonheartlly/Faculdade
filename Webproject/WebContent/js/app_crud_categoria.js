@@ -13,20 +13,22 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 		    });
 	}
 	
-	listar();	
+	listar();
 	
 	$scope.categoria = {
-			"id" : "",
-			"descricao" : "",
-			"preco" : ""
+			"preco" : "",
+			"descricao" : ""
 		};
 	
+
+
 	
 	$scope.seleciona = function(categoria) {
 			$scope.categoria = categoria;
-			new Categoria(categoria.id, categoria.descricao, categoria.preco); 	
+			new Categoria(categoria.preco, categoria.descricao); 	
 	};
 	
+
 
 	$scope.ordena = function(ordena){
 		$scope.varOrdenacao = ordena;
@@ -82,9 +84,5 @@ app.controller("CategoriaCtrl", function($scope, $http) {
 	};
 })
 
-var Categoria = function(id, descricao, preco) {
-	this.id = id;
-	this.descricao = descricao;
-	this.preco = preco;
-};
+
 

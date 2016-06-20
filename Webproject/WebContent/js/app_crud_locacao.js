@@ -50,14 +50,9 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 		$scope.locacao = "";
 	};
 	
-	//Limpa Pesquisa
-	$scope.limpar = function(){
-		$scope.locacoes = null;
-	}
-	
 	//Pesquisa por Funcionario
-	$scope.listarPorFuncionario = function(funcionario){
-		 $http.get(urlBase +"/locacao/funcionario/" + funcionario.idfuncionario)
+	function listarPorFuncionario(funcionario){
+		 $http.get(urlBase +"/locacao/funcionario/{id:" + funcionario.idfuncionario + "}")
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -66,8 +61,8 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	}
 	
 	//Pesquisa por Veiculo
-	$scope.listarPorVeiculo = function(veiculo){
-		 $http.get(urlBase +"/locacao/veiculo/" + veiculo.idVeiculo)
+	function listarPorVeiculo(veiculo){
+		 $http.get(urlBase +"/locacao/veiculo/{id:" + veiculo.idVeiculo + "}")
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -76,8 +71,8 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 	}
 	
 	//Pesquisa por Mes
-	$scope.listarPorMes = function(mes){
-		 $http.get(urlBase +"/locacao/mes/" + mes)
+	function listarPorMes(mes){
+		 $http.get(urlBase +"/locacao/mes/{mes:" + mes + "}")
 		    .then(function(response) {
 		        $scope.locacoes = response.data;
 		    }, function(response){
@@ -130,13 +125,3 @@ app.controller("LocacaoCtrl", function($scope, $http) {
 		deletarlocacao($scope.locacao);
 	};
 })
-
-var Locacao = function(idVeiculo, idCliente, idFuncionario_cad, idFuncionario_ret, data, hora) {
-	this.idVeiculo = idVeiculo;
-	this.idCliente = idCliente;
-	this.idFuncionario_cad = idFuncionario_cad;
-	this.idFuncionario_ret = idFuncionario_ret;
-	this.data = data;
-	this.hora = hora;
-};
-
